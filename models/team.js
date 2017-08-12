@@ -3,7 +3,7 @@ module.exports = function(sequelize, DataTypes) {
     
  var Team = sequelize.define("Team", {
 
-   name: {
+   Team_Name: {
         type: DataTypes.STRING,
         allowNull: false,
         validate: {
@@ -11,5 +11,16 @@ module.exports = function(sequelize, DataTypes) {
         }
     }
   });
+
+  Team.associate = function(models) {
+    // Associating Game with Posts
+    // When an Author is deleted, also delete any associated Posts
+    Team.hasOne(models.Player_To_Game, {
+      foreignKey: {
+        allowNull: false
+      },
+      onDelete: "cascade"
+    });
+  };
   return Team;
 };

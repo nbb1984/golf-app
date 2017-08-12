@@ -7,18 +7,27 @@ module.exports = function(sequelize, DataTypes) {
                 allowNull: false, 
                 validate: { 
                     len: [1, 18]
+                  }
                 },
-    Complete: DataTypes.BOOLEAN 
-
+    WinningTeam: {
+                    type: DataTypes.STRING,
+                },
+    CourseName: DataTypes.STRING,
+    Complete: DataTypes.BOOLEAN,
+    Date: DataTypes.STRING,
+    Time: DataTypes.STRING 
   });
 
 // The following code is not quite ready, but this is the basic framework for associating tables
   Game.associate = function(models) {
     // Associating Game with Posts
     // When an Author is deleted, also delete any associated Posts
-    Game.hasMany(models.Player_To_Game, {
+    Game.hasOne(models.Player_To_Game, {
+      foreignKey: {
+        allowNull: false
+      },
       onDelete: "cascade"
     });
   };
-  return Author;
+  return Game;
 };
