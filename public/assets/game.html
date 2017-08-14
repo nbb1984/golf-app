@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Golf Scoreboard</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+</head>
+
+<body>
+    <!-- start tab headings -->
+    <ul class="nav nav-tabs">
+        <li class="active"><a data-toggle="tab" href="#home">Scoreboard</a></li>
+        <li><a data-toggle="tab" href="#menu1">Enter Scores</a></li>
+    </ul>
+    <!-- end tab headings -->
+    <!-- start tab content -->
+    <div class="tab-content">
+        <!-- start scoreboard tab -->
+        <div id="home" class="tab-pane fade in active">
+            <!-- start jumbotron -->
+            <div class="jumbotron">
+                <div class="container">
+                    <h1>Scoreboard</h1>
+                </div>
+            </div>
+            <!-- end jumbotron -->
+            <!-- start main container -->
+            <div class="container">
+                <!-- start 1st row -->
+                <div class="row">
+                    <div class="page-header">
+                        <h1>Event Name <small>event date</small></h1>
+                    </div>
+                </div>
+                <!-- end 1st row -->
+                <!-- start 2nd row -->
+                <div class="row">
+                    <div class="panel panel-default">
+						<div class="panel-heading">
+							<h3 class="panel-title">Event Leaderboard</h3>
+						</div>
+                        <div class="panel-body">
+                            <table class="table table-condensed">
+                                <thead>
+                                    <tr>
+                                        <th></th>
+                                        <th>1</th>
+                                        <th>2</th>
+                                        <th>3</th>
+                                        <th>4</th>
+                                        <th>5</th>
+                                        <th>6</th>
+                                        <th>7</th>
+                                        <th>8</th>
+                                        <th>9</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <th>Team 1</th>
+                                        <td>3</td>
+                                        <td>3</td>
+                                        <td>3</td>
+                                        <td>3</td>
+                                        <td>3</td>
+                                        <td>3</td>
+                                        <td>3</td>
+                                        <td>3</td>
+                                        <td>3</td>
+                                    </tr>
+                                    <tr>
+                                        <th>Team 2</th>
+                                        <td>3</td>
+                                        <td>3</td>
+                                        <td>3</td>
+                                        <td>3</td>
+                                        <td>3</td>
+                                        <td>3</td>
+                                        <td>3</td>
+                                        <td>3</td>
+                                        <td>3</td>
+                                        <td><span class="glyphicon glyphicon-fire" aria-hidden="true"></span></td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+                <!-- end 2nd row -->
+                <!-- start 3nd row -->
+                <div class="row">
+                    <div class="panel panel-default">
+						<div class="panel-heading">
+							<h3 class="panel-title">Team Scoreboard</h3>
+						</div>
+                        <div class="panel-body">
+                            <table class="table table-condensed">
+                                <thead>
+                                    <tr>
+                                        <th></th>
+                                        <th></th>
+                                        <th>1</th>
+                                        <th>2</th>
+                                        <th>3</th>
+                                        <th>4</th>
+                                        <th>5</th>
+                                        <th>6</th>
+                                        <th>7</th>
+                                        <th>8</th>
+                                        <th>9</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td rowspan="2">team 1</td>
+                                        <td>player 1</td>
+                                        <td>3</td>
+                                        <td>3</td>
+                                        <td>3</td>
+                                        <td>3</td>
+                                        <td>3</td>
+                                        <td>3</td>
+                                        <td>3</td>
+                                        <td>3</td>
+                                        <td>3</td>
+                                    </tr>
+                                    <tr>
+                                        <td>player 2</td>
+                                        <td>3</td>
+                                        <td>3</td>
+                                        <td>3</td>
+                                        <td>3</td>
+                                        <td>3</td>
+                                        <td>3</td>
+                                        <td>3</td>
+                                        <td>3</td>
+                                        <td>3</td>
+                                        <td><span class="glyphicon glyphicon-fire" aria-hidden="true"></span></td>
+                                    </tr>
+                                    <tr>
+                                        <td rowspan="2">team 2</td>
+                                        <td>player 1</td>
+                                        <td>3</td>
+                                        <td>3</td>
+                                        <td>3</td>
+                                        <td>3</td>
+                                        <td>3</td>
+                                        <td>3</td>
+                                        <td>3</td>
+                                        <td>3</td>
+                                        <td>3</td>
+                                        <td><span class="glyphicon glyphicon-fire" aria-hidden="true"></span></td>
+                                    </tr>
+                                    <tr>
+                                        <td>player 2</td>
+                                        <td>3</td>
+                                        <td>3</td>
+                                        <td>3</td>
+                                        <td>3</td>
+                                        <td>3</td>
+                                        <td>3</td>
+                                        <td>3</td>
+                                        <td>3</td>
+                                        <td>3</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+                <!-- end 3nd row -->
+            </div>
+            <!-- end main container -->
+        </div>
+        <!-- end scoreboard tab -->
+        <!-- start entry tab -->
+        <div id="menu1" class="tab-pane fade">
+            <!-- start jumbotron -->
+            <div class="jumbotron">
+                <div class="container">
+                    <h1>Enter Your Scores</h1>
+                </div>
+            </div>
+            <!-- end jumbotron -->
+            <!-- start main container -->
+            <div class="container">
+                <!-- start 1st row -->
+                <div class="row">
+                    <div class="page-header">
+                        <h1>Event Name <small>event date</small></h1>
+                    </div>
+                </div>
+                <!-- end 1st row -->
+                <!-- start 2nd row -->
+                <div class="row">
+                    <div class="panel panel-default">
+                        <div class="panel-body">
+                            this is where we enter our scores
+                        </div>
+                    </div>
+                </div>
+                <!-- end 2nd row -->
+            </div>
+            <!-- end main container -->
+        </div>
+        <!-- end entry tab -->
+    </div>
+    <!-- end tab content -->
+</body>
+
+</html>
