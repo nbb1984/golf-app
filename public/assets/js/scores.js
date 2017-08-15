@@ -1,7 +1,7 @@
 /// RUN EACH TIME NEW SCORE ENTERED BY ANY PLAYER (ON LOAD)
 $(document).ready(function() {
 
-    $(".btn submit-scores-btn").change(function(event) {
+    $(".btn submit-scores-btn").click(function(event) {
         playerJS();
     });
 
