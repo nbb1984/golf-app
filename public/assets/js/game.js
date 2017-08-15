@@ -43,7 +43,7 @@ $(document).ready(function() {
                 .trim()
         }, {
             /// PLAYER DB
-            PlayerName: nameInput
+            name: nameInput
                 .val()
                 .trim()
         }, {
@@ -56,7 +56,7 @@ $(document).ready(function() {
                 .trim()
         }, {
             /// TEAMDB
-            TeamName: teamInput
+            Team_Name: teamInput
                 .val()
                 .trim()
         });
