@@ -5,7 +5,6 @@ $(document).ready(function() {
     var emailInput = $("#player-email");
     var passwordInput = $("#player-password");
     var teamInput = $("#team-name");
-    var holesPlayed = $("#holes-played");
     var courseName = $("#course-name");
     var eventDate = $("#event-date");
     var eventTime = $("#event-time");
@@ -27,10 +26,6 @@ $(document).ready(function() {
         newGame({
             /// GAME DB
             CourseName: courseName
-                .val()
-                .trim()
-        }, {
-            Holes_played: holesPlayed
                 .val()
                 .trim()
         }, {
