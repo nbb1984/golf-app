@@ -5,7 +5,6 @@ $(document).ready(function() {
     var emailInput = $("#player-email");
     var passwordInput = $("#player-password");
     var teamInput = $("#team-name");
-    var holesPlayed = $("#holes-played");
     var courseName = $("#course-name");
     var eventDate = $("#event-date");
     var eventTime = $("#event-time");
@@ -30,10 +29,6 @@ $(document).ready(function() {
                 .val()
                 .trim()
         }, {
-            Holes_played: holesPlayed
-                .val()
-                .trim()
-        }, {
             Date: eventDate
                 .val()
                 .trim()
@@ -43,7 +38,7 @@ $(document).ready(function() {
                 .trim()
         }, {
             /// PLAYER DB
-            PlayerName: nameInput
+            name: nameInput
                 .val()
                 .trim()
         }, {
@@ -56,7 +51,7 @@ $(document).ready(function() {
                 .trim()
         }, {
             /// TEAMDB
-            TeamName: teamInput
+            Team_Name: teamInput
                 .val()
                 .trim()
         });
