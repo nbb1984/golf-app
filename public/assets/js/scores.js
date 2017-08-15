@@ -1,41 +1,79 @@
-/// RUN EACH TIME NEW SCORE ENTERED BY ANY PLAYER
+/// RUN EACH TIME NEW SCORE ENTERED BY ANY PLAYER (ON LOAD)
+$(document).ready(function() {
+	
+    $(".btn submit-scores-btn").change(function(event) {
+        playerJS();
+    });
 
-/// NEEDED VARIABLES 
-
-	// GAMEID
-	// TEAMID
-	// PLAYERID
-	// HOLEID
-
+}); // CLOSE DOCUMENT LOAD 
 
 // ---------------------------- PLAYER JS ---------------------------- //
 
-	// SUM TOTAL SCORE OF PLAYER'S STROKES & UPDATE TOTAL SCORE IN DB
+var playerJS = function() {
 
+    // SUM TOTAL SCORE OF PLAYER'S STROKES
+    newSum(event);
 
-	// CHECK TO SEE IF ALL OTHER TEAMMATES HAVE ENTERED SCORE FOR THE HOLE
+    // CHECK TO SEE IF ALL OTHER TEAMMATES HAVE ENTERED SCORE FOR THE HOLE
 
+    	// IF ALL TEAMMATES HAVE ENTERED SCORE FOR HOLE
 
-		// IF ALL TEAMMATES HAVE ENTERED SCORE FOR HOLE
+    			// FIND LOWEST SCORE
 
-			// FIND LOWEST SCORE
+    			// ADD SCORE TO GROUP SCORECARD
 
-			// ADD SCORE TO GROUP SCORECARD
+    			// RUN GROUP JS
+    			groupJS();
 
-			// UPDATE GROUP TOTAL SCORE
+    	// IF HOLE INCOMPLETE
 
+    			// DO NOTHING
 
-		// IF HOLE INCOMPLETE
+}; // Close playerJS
 
-			// DO NOTHING
 
 
 // ---------------------------- GROUP JS ---------------------------- //
 
-	// FIND WHAT HOLE ALL GROUPS HAVE PLAYED THROUGH
+var groupJS = function() {
 
-		// COMPARE TOTAL SCORE OF CURRENT HOLE PLAYED AND UPDATE WINNING TEAM IN GAME DB
+    // SUM TOTAL SCORE OF GROUP'S STROKES
+    newSum(event);
+
+    // FIND WHAT HOLE ALL GROUPS HAVE PLAYED THROUGH
+
+
+    // COMPARE TOTAL SCORE OF CURRENT HOLE PLAYED AND UPDATE WINNING TEAM IN GAME DB
 
 
 
- 
+} // Close groupJS
+
+
+
+
+// --------------------------- SUM STROKES -------------------------- //
+
+function newSum(event) {
+    var row = 0,
+        col = 0,
+        ncol = 0;
+    var sum;
+    // sum by row
+    $(".scoreRow").each(function(rowindex) {
+            sum = 0;
+            col = 0;
+            $(this).find("td").each(function(colindex) {
+                col++;
+                newval = $(this).find("input").val();
+                if (isNaN(newval)) {
+                    $(this).html(sum);
+                    if (col > ncol) {
+                        ncol = col - 1
+                    }
+                } else {
+                    sum += parseInt(newval);
+                }
+            });
+        }
+    } // Close newSum
