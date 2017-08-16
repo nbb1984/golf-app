@@ -2,7 +2,7 @@
   "development": {
     "username": "root",
     "password": "IDKwImd07",
-    "database": "golf_app_db",
+    "database": "golf_db",
     "host": "127.0.0.1",
     "dialect": "mysql"
   },
