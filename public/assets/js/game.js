@@ -10,7 +10,7 @@ $(document).ready(function() {
     var eventTime = $("#event-time");
 
     // Handle game-form submit
-    $(document).on("submit", "#game-form", handleGameFormSubmit);
+    $(document).on("submit", "#form--event-add", handleGameFormSubmit);
 
     // A function to handle what happens when the form is submitted to create a new Gamee
     function handleGameFormSubmit(event) {
