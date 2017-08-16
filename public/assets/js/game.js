@@ -15,6 +15,8 @@ $(document).ready(function() {
     // A function to handle what happens when the form is submitted to create a new Gamee
     function handleGameFormSubmit(event) {
 
+        console.log("calling function");
+
         event.preventDefault();
 
         // Don't do anything if the name fields hasn't been filled out
@@ -60,6 +62,7 @@ $(document).ready(function() {
     // A function for creating a game
     function newGame(gameData) {
         $.post("/api/newGame", gameData)
+        console.log("connected");
     }
 
 });
