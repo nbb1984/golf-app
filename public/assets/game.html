@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+    <!DOCTYPE html>
 <html lang="en">
 
 <head>
@@ -47,7 +47,7 @@
                         <div class="panel-body">
                             <table class="table table-condensed">
                                 <thead>
-                                    <tr class="scoreRow">
+                                    <tr>
                                         <th></th>
                                         <th>1</th>
                                         <th>2</th>
@@ -58,11 +58,10 @@
                                         <th>7</th>
                                         <th>8</th>
                                         <th>9</th>
-                                        <th>Total</th>
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <tr class="scoreRow">
+                                    <tr>
                                         <th>Team 1</th>
                                         <td>3</td>
                                         <td>3</td>
@@ -73,9 +72,8 @@
                                         <td>3</td>
                                         <td>3</td>
                                         <td>3</td>
-                                        <td class="rowsum"></td>
                                     </tr>
-                                    <tr class="scoreRow">
+                                    <tr>
                                         <th>Team 2</th>
                                         <td>3</td>
                                         <td>3</td>
@@ -86,7 +84,6 @@
                                         <td>3</td>
                                         <td>3</td>
                                         <td>3</td>
-                                        <td class="rowsum"></td>
                                         <td><span class="glyphicon glyphicon-fire" aria-hidden="true"></span></td>
                                     </tr>
                                 </tbody>
@@ -104,7 +101,7 @@
                         <div class="panel-body">
                             <table class="table table-condensed">
                                 <thead>
-                                    <tr class="scoreRow">
+                                    <tr>
                                         <th></th>
                                         <th></th>
                                         <th>1</th>
@@ -116,13 +113,12 @@
                                         <th>7</th>
                                         <th>8</th>
                                         <th>9</th>
-                                        <th>Total</th>
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <tr class="scoreRow">
-                                        <th rowspan="2">Team 1</th>
-                                        <th>Player 1</th>
+                                    <tr>
+                                        <td rowspan="2">team 1</td>
+                                        <td>player 1</td>
                                         <td>3</td>
                                         <td>3</td>
                                         <td>3</td>
@@ -132,10 +128,9 @@
                                         <td>3</td>
                                         <td>3</td>
                                         <td>3</td>
-                                        <td class="rowsum"></td>
                                     </tr>
-                                    <tr class="scoreRow">
-                                        <th>Player 2</th>
+                                    <tr>
+                                        <td>player 2</td>
                                         <td>3</td>
                                         <td>3</td>
                                         <td>3</td>
@@ -145,12 +140,11 @@
                                         <td>3</td>
                                         <td>3</td>
                                         <td>3</td>
-                                        <td class="rowsum"></td>
                                         <td><span class="glyphicon glyphicon-fire" aria-hidden="true"></span></td>
                                     </tr>
-                                    <tr class="scoreRow">
-                                        <th rowspan="2">Team 2</th>
-                                        <th>Player 1</th>
+                                    <tr>
+                                        <td rowspan="2">team 2</td>
+                                        <td>player 1</td>
                                         <td>3</td>
                                         <td>3</td>
                                         <td>3</td>
@@ -160,11 +154,10 @@
                                         <td>3</td>
                                         <td>3</td>
                                         <td>3</td>
-                                        <td class="rowsum"></td>
                                         <td><span class="glyphicon glyphicon-fire" aria-hidden="true"></span></td>
                                     </tr>
-                                    <tr class="scoreRow">
-                                        <th>Player 2</th>
+                                    <tr>
+                                        <td>player 2</td>
                                         <td>3</td>
                                         <td>3</td>
                                         <td>3</td>
@@ -174,7 +167,6 @@
                                         <td>3</td>
                                         <td>3</td>
                                         <td>3</td>
-                                        <td class="rowsum"></td>
                                     </tr>
                                 </tbody>
                             </table>
@@ -211,121 +203,30 @@
                             <form method="post" action="">
                                 <div class="form-group">
                                     <label for="name">Hole 1</label>
-                                    <button type="button" class="btn dec-btn score-btn">-</button>
+                                    <button type="button" class="btn dec-button">-</button>
                                     <input type="text" id="Hole1" value="0">
-                                    <button type="button" class="btn inc-btn score-btn">+</button>
-                                    <button type="button" class="btn submit-scores-btn" id="scoreBtn">Enter</button>
+                                    <button type="button" class="btn inc-button">+</button>
+                                    <button type="button" class="btn submit-scores-btn">Enter</button>
                                 </div>
                                 <div class="form-group">
                                     <label for="name">Hole 2</label>
-                                    <button type="button" class="btn dec-btn score-btn">-</button>
+                                    <button type="button" class="btn dec-button">-</button>
                                     <input type="text" id="Hole2" value="0">
-                                    <button type="button" class="btn inc-btn score-btn">+</button>
+                                    <button type="button" class="btn inc-button">+</button>
                                     <button type="button" class="btn submit-scores-btn">Enter</button>
                                 </div>
                                 <div class="form-group">
                                     <label for="name">Hole 3</label>
-                                    <button type="button" class="btn dec-btn score-btn">-</button>
+                                    <button type="button" class="btn dec-button">-</button>
                                     <input type="text" id="Hole3" value="0">
-                                    <button type="button" class="btn inc-btn score-btn">+</button>
+                                    <button type="button" class="btn inc-button">+</button>
                                     <button type="button" class="btn submit-scores-btn">Enter</button>
                                 </div>
                                 <div class="form-group">
                                     <label for="name">Hole 4</label>
-                                    <button type="button" class="btn dec-btn score-btn">-</button>
+                                    <button type="button" class="btn dec-button">-</button>
                                     <input type="text" id="Hole4" value="0">
-                                    <button type="button" class="btn inc-btn score-btn">+</button>
-                                    <button type="button" class="btn submit-scores-btn">Enter</button>
-                                </div>
-                                <div class="form-group">
-                                    <label for="name">Hole 5</label>
-                                    <button type="button" class="btn dec-btn score-btn">-</button>
-                                    <input type="text" id="Hole5" value="0">
-                                    <button type="button" class="btn inc-btn score-btn">+</button>
-                                    <button type="button" class="btn submit-scores-btn">Enter</button>
-                                </div>
-                                <div class="form-group">
-                                    <label for="name">Hole 6</label>
-                                    <button type="button" class="btn dec-btn score-btn">-</button>
-                                    <input type="text" id="Hole6" value="0">
-                                    <button type="button" class="btn inc-btn score-btn">+</button>
-                                    <button type="button" class="btn submit-scores-btn">Enter</button>
-                                </div>
-                                <div class="form-group">
-                                    <label for="name">Hole 7</label>
-                                    <button type="button" class="btn dec-btn score-btn">-</button>
-                                    <input type="text" id="Hole7" value="0">
-                                    <button type="button" class="btn inc-btn score-btn">+</button>
-                                    <button type="button" class="btn submit-scores-btn">Enter</button>
-                                </div>
-                                <div class="form-group">
-                                    <label for="name">Hole 8</label>
-                                    <button type="button" class="btn dec-btn score-btn">-</button>
-                                    <input type="text" id="Hole8" value="0">
-                                    <button type="button" class="btn inc-btn score-btn">+</button>
-                                    <button type="button" class="btn submit-scores-btn">Enter</button>
-                                </div>
-                                <div class="form-group">
-                                    <label for="name">Hole 10</label>
-                                    <button type="button" class="btn dec-btn score-btn">-</button>
-                                    <input type="text" id="Hole10" value="0">
-                                    <button type="button" class="btn inc-btn score-btn">+</button>
-                                    <button type="button" class="btn submit-scores-btn">Enter</button>
-                                </div>
-                                <div class="form-group">
-                                    <label for="name">Hole 11</label>
-                                    <button type="button" class="btn dec-btn score-btn">-</button>
-                                    <input type="text" id="Hole11" value="0">
-                                    <button type="button" class="btn inc-btn score-btn">+</button>
-                                    <button type="button" class="btn submit-scores-btn">Enter</button>
-                                </div>
-                                <div class="form-group">
-                                    <label for="name">Hole 12</label>
-                                    <button type="button" class="btn dec-btn score-btn">-</button>
-                                    <input type="text" id="Hole12" value="0">
-                                    <button type="button" class="btn inc-btn score-btn">+</button>
-                                    <button type="button" class="btn submit-scores-btn">Enter</button>
-                                </div>
-                                <div class="form-group">
-                                    <label for="name">Hole 13</label>
-                                    <button type="button" class="btn dec-btn score-btn">-</button>
-                                    <input type="text" id="Hole13" value="0">
-                                    <button type="button" class="btn inc-btn score-btn">+</button>
-                                    <button type="button" class="btn submit-scores-btn">Enter</button>
-                                </div>
-                                <div class="form-group">
-                                    <label for="name">Hole 14</label>
-                                    <button type="button" class="btn dec-btn score-btn">-</button>
-                                    <input type="text" id="Hole14" value="0">
-                                    <button type="button" class="btn inc-btn score-btn">+</button>
-                                    <button type="button" class="btn submit-scores-btn">Enter</button>
-                                </div>
-                                <div class="form-group">
-                                    <label for="name">Hole 15</label>
-                                    <button type="button" class="btn dec-btn score-btn">-</button>
-                                    <input type="text" id="Hole15" value="0">
-                                    <button type="button" class="btn inc-btn score-btn">+</button>
-                                    <button type="button" class="btn submit-scores-btn">Enter</button>
-                                </div>
-                                <div class="form-group">
-                                    <label for="name">Hole 16</label>
-                                    <button type="button" class="btn dec-btn score-btn">-</button>
-                                    <input type="text" id="Hole16" value="0">
-                                    <button type="button" class="btn inc-btn score-btn">+</button>
-                                    <button type="button" class="btn submit-scores-btn">Enter</button>
-                                </div>
-                                <div class="form-group">
-                                    <label for="name">Hole 17</label>
-                                    <button type="button" class="btn dec-btn score-btn">-</button>
-                                    <input type="text" id="Hole17" value="0">
-                                    <button type="button" class="btn inc-btn score-btn">+</button>
-                                    <button type="button" class="btn submit-scores-btn">Enter</button>
-                                </div>
-                                <div class="form-group">
-                                    <label for="name">Hole 18</label>
-                                    <button type="button" class="btn dec-btn score-btn">-</button>
-                                    <input type="text" id="Hole18" value="0">
-                                    <button type="button" class="btn inc-btn score-btn">+</button>
+                                    <button type="button" class="btn inc-button">+</button>
                                     <button type="button" class="btn submit-scores-btn">Enter</button>
                                 </div>
                             </form>
