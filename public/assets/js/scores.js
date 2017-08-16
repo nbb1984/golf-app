@@ -16,18 +16,18 @@ var playerJS = function() {
 
     // CHECK TO SEE IF ALL OTHER TEAMMATES HAVE ENTERED SCORE FOR THE HOLE
 
-    	// IF ALL TEAMMATES HAVE ENTERED SCORE FOR HOLE
+        // IF ALL TEAMMATES HAVE ENTERED SCORE FOR HOLE
 
-    		// FIND LOWEST SCORE
+            // FIND LOWEST SCORE
 
-    		// ADD SCORE TO GROUP SCORECARD
+            // ADD SCORE TO GROUP SCORECARD
 
-		    // RUN GROUP JS 
-		    groupJS();
+            // RUN GROUP JS 
+            groupJS();
 
-   	 // IF HOLE INCOMPLETE
+     // IF HOLE INCOMPLETE
 
-    		// DO NOTHING
+            // DO NOTHING
 
 }; // Close playerJS
 
