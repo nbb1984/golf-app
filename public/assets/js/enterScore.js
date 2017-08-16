@@ -1,8 +1,8 @@
 $(document).ready(function() {
 
     // Getting references to the form inputs
-    var currentHole = $("#hole");
-    var strokes = $("#strokes");
+    var Hole1 = $(".Hole1");
+
 
     // Handle enter-form submit
     $(document).on("submit", "#enter-form", handleEnterFormSubmit);
@@ -21,7 +21,7 @@ $(document).ready(function() {
 
         enterScore({
             /// PLAYER TO GAME DB
-            holeID: currentHole
+            Hole1: Hole1
                 .val()
                 .trim()
         }, {
