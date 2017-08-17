@@ -13,11 +13,12 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
     
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-    <script type="text/javascript" src="/assets/js/game.js"></script>
-    <script type="text/javascript" src="/assets/js/enterScore.js"></script>
-    <script type="text/javascript" src="/assets/js/join.js"></script>
-    <script type="text/javascript" src="/assets/js/login.js"></script>
-    <script type="text/javascript" src="/assets/js/scores.js"></script>
+    <script type="text/javascript" src="assets/js/game.js"></script>
+    <script type="text/javascript" src="assets/js/enterScore.js"></script>
+    <script type="text/javascript" src="assets/js/join.js"></script>
+    <script type="text/javascript" src="assets/js/login.js"></script>
+    <script type="text/javascript" src="assets/js/scores.js"></script>
+
 </head>
 
 <body> 
@@ -79,22 +80,23 @@
                         <div class="panel-body">
                             <form method ="POST" action="/api/newGame" id="form--event-add">
                                 <div class="input-group">
-                                    <label class="input-group-addon" for="course">Event Name</label>
-                                    <input type="text" id="name" name="courseName" class="form-control" placeholder="Name">
-                                    <input type="text" id="address" name="courseAddress" class="form-control" placeholder="Address">
-                                    <input type="text" id="date" name="courseDate" class="form-control" placeholder="Date">
-                                    <input type="text" id="time" name="courseTime" class="form-control" placeholder="Time">
+                                    <label class="input-group-addon" for="course">Player Information</label>
+                                    <input type="text" id="player-name" name="createEventPlayer" class="form-control" placeholder="Player Name">
+                                    <input type="text" id="player-email" name="createEventEmail" class="form-control" placeholder="Email Address">
+                                    <input type="text" id="player-password" name="createEventPassword" class="form-control" placeholder="Password">
                                 </div>
                                 <div class="input-group">
-                                    <label class="input-group-addon" for="player">Event Creator</label>
-                                    <input type="text" id="admin" name="admin" class="form-control" placeholder="Event Creator Information">
-                                    <input type="text" id="admin" name="name" class="form-control" placeholder="Name">
-                                    <input type="text" id="adminEmail" name="email" class="form-control" placeholder="Email">
-                                    <input type="text" id="adminPw" name="password" class="form-control" placeholder="Password">
+                                    <label class="input-group-addon" for="player">Event Information</label>
+                                    <input type="text" id="team-name" name="createEventTeam" class="form-control" placeholder="Team Name">
+                                    <input type="text" id="course-name" name="createEventTeam" class="form-control" placeholder="Course Name">
+                                    <input type="text" id="event-date" name="createEventDate" class="form-control" placeholder="Date">
+                                    <input type="text" id="event-time" name="createEventTime" class="form-control" placeholder="Time">
+
+
                                 </div>
                                 <!-- Submit Button -->
                                 <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                                <button class="btn btn-default" type="submit" id="game-form">Submit</button>
+                                <button class="btn btn-default" type="submit" id="form--event-add">Submit</button>
                             </form>
                         </div>
                     </div>
@@ -113,13 +115,13 @@
                             <h3 class="panel-title">Join an Event</h3>
                         </div>
                         <div class="panel-body">
-                            <form id="form--event-add">
+                            <form method="GET" action="/api/joinGame" id="join-form">
                                 <div class="input-group">
                                     <label class="input-group-addon" for="course">Your Information</label>
-                                    <input type="text" id="course" name="courseName" class="form-control" placeholder="Name">
-                                    <input type="text" id="players" name="players" class="form-control" placeholder="Email">
-                                    <input type="text" id="players" name="players" class="form-control" placeholder="Password">
-                                    <input type="text" id="players" name="players" class="form-control" placeholder="Team Join/Create">
+                                    <input type="text" id="player-name" name="joinName" class="form-control" placeholder="Name">
+                                    <input type="text" id="player-email" name="joinPlayer" class="form-control" placeholder="Email">
+                                    <input type="text" id="player-password" name="joinPassword" class="form-control" placeholder="Password">
+                                    <input type="text" id="team-name" name="joinTeamName" class="form-control" placeholder="Team Join/Create">
                                 </div>
                                 <!-- Submit Button -->
                                 <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
@@ -139,14 +141,14 @@
                 <div class="modal-body">
                     <div class="panel panel-default">
                         <div class="panel-heading">
-                            <h3 class="panel-title">Join an Event</h3>
+                            <h3 class="panel-title">Login</h3>
                         </div>
                         <div class="panel-body">
-                            <form id="form--event-add">
+                            <form method="GET" action="/api/login" id="login-form">
                                 <div class="input-group">
                                     <label class="input-group-addon" for="course">Your Information</label>
-                                    <input type="text" id="course" name="courseName" class="form-control" placeholder="Email">
-                                    <input type="text" id="players" name="players" class="form-control" placeholder="Password">
+                                    <input type="text" id="player-email" name="loginEmail" class="form-control" placeholder="Email">
+                                    <input type="text" id="player-password" name="loginPassword" class="form-control" placeholder="Password">
                                 </div>
                                 <!-- Submit Button -->
                                 <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
