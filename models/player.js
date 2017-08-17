@@ -3,7 +3,7 @@ module.exports = function(sequelize, DataTypes) {
     
  var Player = sequelize.define("Player", {
 
-	   player_name: {
+	   playername: {
 	        type: DataTypes.STRING,
 	        allowNull: true,
 	        validate: {
