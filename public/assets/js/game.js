@@ -29,40 +29,33 @@ $(document).ready(function() {
             /// GAME DB
             coursename: courseName
                 .val()
-                .trim()
-        }, {
+                .trim(),
             date: eventDate
                 .val()
-                .trim()
-        }, {
-            time: eventTime
-                .val()
-                .trim()
-        }, {
+                .trim(),
             /// PLAYER DB
             playername: nameInput
                 .val()
-                .trim()
-        }, {
+                .trim(),
             email: emailInput
                 .val()
-                .trim()
-        }, {
+                .trim(),
             password: passwordInput
                 .val()
-                .trim()
-        }, {
+                .trim(),
             /// TEAMDB
             teamname: teamInput
                 .val()
                 .trim()
         });
-    };
 
-    // A function for creating a game
-    function newGame(gameData) {
-        $.post("/api/newGame", gameData)
-        console.log("connected");
-    }
+
+        // A function for creating a game
+        function newGame(gameData) {
+            $.post("/api/newGame", gameData)
+            console.log("connected");
+        }
+
+    });
 
 });
