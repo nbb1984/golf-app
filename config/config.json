@@ -1,7 +1,7 @@
 {
   "development": {
     "username": "root",
-    "password": "Jujupop12",
+    "password": "1215",
     "database": "golf_db",
     "host": "127.0.0.1",
     "dialect": "mysql"
