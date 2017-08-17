@@ -13,12 +13,13 @@ module.exports = function(sequelize, DataTypes) {
   });
 
   Team.associate = function(models) {
-    // Associating Game with Posts
-    // When an Author is deleted, also delete any associated Posts
-    Team.hasOne(models.Player_To_Game, {
-      foreignKey: {
-        allowNull: false
-      },
+
+    Team.hasMany(models.Player, {
+      onDelete: "cascade"
+    });
+    
+    Team.belongsToMany(models.Game, {
+      through:"teamGame",
       onDelete: "cascade"
     });
   };
