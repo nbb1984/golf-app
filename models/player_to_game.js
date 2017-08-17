@@ -1,7 +1,7 @@
 // export player sequelizer
 module.exports = function(sequelize, DataTypes) {
   
-  var Player_To_Game = sequelize.define("Player_To_Game", {
+  var PlayerToGame = sequelize.define("PlayerToGame", {
 
     // playerID: {
     //   type: DataTypes.INTEGER,
@@ -14,7 +14,7 @@ module.exports = function(sequelize, DataTypes) {
     // gameID: {
     //   type: DataTypes.INTEGER,
     //   allowNull: false
-    // },
+    //},
     Hole1: {
       type: DataTypes.INTEGER,
       allowNull: true
@@ -93,17 +93,20 @@ module.exports = function(sequelize, DataTypes) {
     },
   });
 
-  Player_To_Game.associate = function(models) {
+  PlayerToGame.associate = function(models) {
     // Associating Game with Posts
     // When an Author is deleted, also delete any associated Posts
-    Player_To_Game.belongsTo(models.Player_To_Game, {
-      foreignKey: {
-        allowNull: false
-      },
+    PlayerToGame.belongsToMany(models.Player, {
+      through: "playerThrough",
       onDelete: "cascade"
     });
+
+    PlayerToGame.belongsToMany(models.Game, { 
+      through: "gameThrough",
+      onDelete: "cascade"
+    });   
   };
 
-  return Player_To_Game;
+  return PlayerToGame;
 };
   
