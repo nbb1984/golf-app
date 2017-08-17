@@ -27,20 +27,20 @@ $(document).ready(function() {
         // Calling the newGame function and passing in the values in the game input
         newGame({
             /// GAME DB
-            CourseName: courseName
+            coursename: courseName
                 .val()
                 .trim()
         }, {
-            Date: eventDate
+            date: eventDate
                 .val()
                 .trim()
         }, {
-            Time: eventTime
+            time: eventTime
                 .val()
                 .trim()
         }, {
             /// PLAYER DB
-            name: nameInput
+            playername: nameInput
                 .val()
                 .trim()
         }, {
@@ -53,7 +53,7 @@ $(document).ready(function() {
                 .trim()
         }, {
             /// TEAMDB
-            Team_Name: teamInput
+            teamname: teamInput
                 .val()
                 .trim()
         });

@@ -14,26 +14,24 @@ module.exports = function(app) {
       
         // findAll returns all entries for a table when used with no options
         db.Game.create({
-            course_name: req.body.courseName,
-            address: req.body.address,
+            coursename: req.body.coursename,
             date: req.body.date,
-            time: req.body.time,
-            course_name: req.body.course_name
+            time: req.body.time
 
             // promise
         }).then(function(dbGame) {
             //once game is posted, post to player db
             db.Player.create({
-                player_name: req.body.player_name,
+                playername: req.body.playername,
                 email: req.body.email,
-                password: req.body.password
-                // team: req.body.Team_Name
+                password: req.body.password,
+                team: req.body.team
 
 
             }).then(function(dbPlayer) {
 
                 db.Team.create({
-                    team_name: req.body.team_name
+                    teamname: req.body.teamname
 
 
                 }).then(function(dbTeam) {
@@ -73,7 +71,7 @@ module.exports = function(app) {
     app.post("/api/joinGame", function(req, res) {
 
         db.Player.create({
-            player_name: req.body.player_name,
+            playername: req.body.playername,
             email: req.body.email,
             password: req.body.password,
             team: req.body.team
