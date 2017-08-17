@@ -1,14 +1,14 @@
 module.exports = function(sequelize, DataTypes) {
   var Game = sequelize.define("Game", {
 
-    Teams: DataTypes.STRING,
-    WinningTeam: {
+    teams: DataTypes.STRING,
+    winningteam: {
                     type: DataTypes.STRING,
                 },
-    CourseName: DataTypes.STRING,
-    Complete: DataTypes.BOOLEAN,
-    Date: DataTypes.STRING,
-    Time: DataTypes.STRING 
+    coursename: DataTypes.STRING,
+    complete: DataTypes.BOOLEAN,
+    date: DataTypes.STRING,
+    time: DataTypes.STRING 
   });
 
   Game.associate = function(models) {
@@ -16,9 +16,7 @@ module.exports = function(sequelize, DataTypes) {
     Game.hasMany(models.PlayerToGame, {
       onDelete: "cascade"
     });
-    /*Game.hasMany(models.Team, {
-      onDelete: "cascade"
-    });*/
+
   };
   return Game;
 };

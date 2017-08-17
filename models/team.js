@@ -3,7 +3,7 @@ module.exports = function(sequelize, DataTypes) {
     
  var Team = sequelize.define("Team", {
 
-   Team_Name: {
+   teamname: {
         type: DataTypes.STRING,
         allowNull: false,
         validate: {
@@ -18,10 +18,10 @@ module.exports = function(sequelize, DataTypes) {
       onDelete: "cascade"
     });
     
-    Team.belongsToMany(models.Game, {
-      through:"teamGame",
-      onDelete: "cascade"
-    });
+    // Team.belongsToMany(models.Game, {
+    //   through:"teamGame",
+    //   onDelete: "cascade"
+    // });
   };
   return Team;
 };
