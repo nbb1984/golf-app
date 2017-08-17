@@ -1,7 +1,7 @@
 // Routes =============================================================
 module.exports = function(app) {
 
- 
+var db = require("../models")
 //
   // POST for a new game. Adds Admin
   app.post("/api/newGame", function(req, res) {
