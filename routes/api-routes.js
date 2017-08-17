@@ -1,132 +1,166 @@
 // Routes =============================================================
+var db = require("../models/index.js");
+
 module.exports = function(app) {
 
-var db = require("../models")
-//
-  // POST for a new game. Adds Admin
-  app.post("/api/newGame", function(req, res) {
-    // findAll returns all entries for a table when used with no options
-    db.Game.create({
-      holes_played: req.body.holes_played,
-      course_name: req.body.course_name,
-      // password: req.body.password
-    }).then(function(dbGame) {
 
-      db.Player.create({
-        player_name: req.body.player_name,
-        email: req.body.email,
-        password: req.body.password,
-        team: req.body.team
-      }).then(function(dbPlayer) {
+    //
+    // POST for a new game. Adds Admin
+    app.post("/api/newGame", function(req, res) {
 
-          res.json({dbGame, dbPlayer});
-        }).catch(function(error) {
-          res.send(error);
+      console.log("\n\n\n>>>>");
+      console.log(req.body);
+      console.log("\n\n\n>>>>");
+      
+        // findAll returns all entries for a table when used with no options
+        db.Game.create({
+            course_name: req.body.courseName,
+            address: req.body.address,
+            date: req.body.date,
+            time: req.body.time,
+            course_name: req.body.course_name
+
+            // promise
+        }).then(function(dbGame) {
+            //once game is posted, post to player db
+            db.Player.create({
+                player_name: req.body.player_name,
+                email: req.body.email,
+                password: req.body.password
+                // team: req.body.Team_Name
+
+
+            }).then(function(dbPlayer) {
+
+                db.Team.create({
+                    team_name: req.body.team_name
+
+
+                }).then(function(dbTeam) {
+                    db.Player_To_Game.create({
+                        gameId: dbGame.Id,
+                        PlayerId: dbPlayer.Id,
+                        admin: true
+
+
+                    }).then(function(dbP2G) {
+                        res.json({ dbP2G, dbTeam, dbPlayer, dbGame });
+                    }).catch(function(error) {
+                        res.send(error);
+                    });
+                });
+            });
+
         });
     });
-  });
 
-// joinGame GETS all the games from the game table, and PUTS the new player onto the player table
-  app.get("/api/joinGame", function(req, res) {
-    db.Game.findAll({}).then(function(dbGame) {
-      res.json(dbGame);
+
+    // res.json({dbGame, dbPlayer});
+    //       }).catch(function(error) {
+    //         res.send(error);
+
+    // joinGame GETS all the games from the game table, and PUTS the new player onto the player table
+    app.get("/api/joinGame", function(req, res) {
+        db.Game.findAll({
+            // include: [db.Team]
+        }).then(function(dbGame) {
+            res.json(dbGame);
+        });
+
+
+    });
+    //maybe working   
+    app.post("/api/joinGame", function(req, res) {
+
+        db.Player.create({
+            player_name: req.body.player_name,
+            email: req.body.email,
+            password: req.body.password,
+            team: req.body.team
+        }).then(function(dbPlayer) {
+
+            res.json(dbPlayer);
+        }).catch(function(error) {
+            res.send(error);
+        });
     });
 
 
-  });
-//not working
-  app.post("/api/joinGame", function(req, res) {
+    // GETS users for handling log-in info. // may have to be restructured.
+    app.get("/api/login", function(req, res) {
 
-    db.Player.create({
-      player_name: req.body.player_name,
-      email: req.body.email,
-      password: req.body.password,
-      team: req.body.team
-    }).then(function(dbPlayer) {
-
-      res.json(dbPlayer);
-    }).catch(function(error) {
-      res.send(error);
-    });
-  });
+        db.Player.findOne({
+            where: {
+                name: req.body.name,
+                password: req.body.password,
+            }
+        })
 
 
-// GETS users for handling log-in info. // may have to be restructured.
-  app.get("/api/login", function(req, res) {
 
-    var username = {};
+        db.Game.findOne({
+            where: {
+                id: req.params.id
+            },
+        }).then(function(dbPlayer) {
 
-    if (req.query.player_name) {
-      username.player_name = req.query.player_name;
-    }
+            if (username) {
+                res.redirect("/game/" + gameID + "/player/" + playerID)
+            }
 
-    db.Player.findAll({
-      where: username
-    }).then(function(dbPlayer) {
-      res.json(dbPlayer);
-    });
-  });
-
-
-// GETing specific info about a game.
-  app.get("/game/:gameID/player/:playerID", function(req, res) {
-    db.Game.findOne({
-      where: {
-        ID: req.params.gameID
-      }
-    }).then(function(dbGame) {
-      res.json(dbGame);
+            res.json(dbPlayer);
+        });
     });
 
-    db.Player_To_Game.findAll({
-      where: {
-        GameID: req.params.gameID
-      }
-    }).then(function(dbPlayerToGame) {
-      res.json(dbPlayerToGame);
+
+    // GETing specific info about a game.
+    app.get("/game/:gameID/player/:playerID", function(req, res) {
+        db.Game.findOne({
+            where: {
+                ID: req.params.gameID
+            },
+            // include: [{
+            //     model: db.Team
+            // }]
+        }).then(function(dbGame) {
+            res.json(dbGame);
+        });
+
+        db.Player_To_Game.findAll({
+            where: {
+                GameID: req.params.gameID
+            }
+        }).then(function(dbPlayerToGame) {
+            res.json(dbPlayerToGame);
+        });
+
+
     });
 
-    
-  });
-
-app.get("/game/:gameID/player/:playerID", function(req, res) {
-  db.Player_To_Game.findAll({
-      where: {
-        GameID: req.params.gameID
-      }
-    }).then(function(dbPlayerToGame) {
-      res.json(dbPlayerToGame);
+    //
+    app.get("/find/game/:gameID/player/:playerID", function(req, res) {
+        db.Player_To_Game.findAll({
+            include: db.Player,
+            include: db.Team,
+            where: {
+                GameID: req.params.gameID
+            }
+        }).then(function(dbPlayerToGame) {
+            res.json(dbPlayerToGame);
+        });
     });
-});
 
-app.post("/api/enterscore", function(req, res) {
-  db.Player_To_Game.create({
-     hole1: req.body.hole1,
-     hole2: req.body.hole2,
-     hole3: req.body.hole3,
-     hole4: req.body.hole4,
-     hole5: req.body.hole5,
-     hole6: req.body.hole6,
-     hole7: req.body.hole7,
-     hole8: req.body.hole8,
-     hole9: req.body.hole9,
-     hole10: req.body.hole10,
-     hole11: req.body.hole11,
-     hole12: req.body.hole12,
-     hole13: req.body.hole13,
-     hole14: req.body.hole14,
-     hole15: req.body.hole15,
-     hole16: req.body.hole16,
-     hole17: req.body.hole17,
-     hole18: req.body.hole18
+    app.post("/api/enterscore/:hole", function(req, res) {
+        var scoreOfHole = {}
+        scoreOfHole[req.body.hole] = req.body.score;
+        db.PlayerToGame.update(scoreOfHole).then(function(dbPlayerToGame) {
 
-   }).then(function(dbPlayer) {
+            res.json(dbPlayerToGame);
+        }).catch(function(error) {
+            res.send(error);
+        });
 
-      res.json(dbPlayer);
-    }).catch(function(error) {
-      res.send(error);
     });
-});
 
 
 
