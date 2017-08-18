@@ -3,43 +3,46 @@ var db = require("../models/index.js");
 
 module.exports = function(app) {
 
-    ///  CREATE A NEW GAME TABLE FROM CREATE NEW GAME MODAL
+
+    //
+    // POST for a new game. Adds Admin
     app.post("/api/newGame", function(req, res) {
 
         console.log("\n\n\n>>>>");
         console.log(req.body);
         console.log("\n\n\n>>>>");
 
-        // ADD INFO TO GAME TABLE
+        // findAll returns all entries for a table when used with no options
         db.Game.create({
             coursename: req.body.coursename,
             date: req.body.date,
             time: req.body.time
 
-        // ADD INFO TO PLAYER TABLE
+            // promise
         }).then(function(dbGame) {
+            //once game is posted, post to player db
             db.Player.create({
                 playername: req.body.playername,
                 email: req.body.email,
                 password: req.body.password,
-                teamname: req.body.teamname
+                team: req.body.team
 
-        // ADD INFO TO TEAM TABLE
+
             }).then(function(dbPlayer) {
 
                 db.Team.create({
                     teamname: req.body.teamname
 
-        // ADD INFO TO PLAYERTOTEAM TABLE
+
                 }).then(function(dbTeam) {
                     db.PlayerToGame.create({
                         GameId: dbGame.id,
                         PlayerId: dbPlayer.id,
-                        teamname: dbTeam.teamname,
                         admin: true
-                        // ADD INFO TO TEAM TABLE
+
+
                     }).then(function(dbP2G) {
-                        res.json({ dbP2G, dbTeam, dbPlayer, dbGame });
+                        // res.json({ dbP2G, dbTeam, dbPlayer, dbGame });
                         res.redirect("/game/" + dbGame.id + "/player/" + dbPlayer.id)
 
                     }).catch(function(error) {
