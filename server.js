@@ -25,6 +25,12 @@ app.use(bodyParser.json({ type: "application/vnd.api+json" }));
 // Static directory
 app.use(express.static("./public"));
 
+// Setting handlebars as rendering engine
+var exhb = require("express-handlebars");
+
+app.engine("handlebars", exhb({ defaultLayout: "main" }));
+app.set("view engine", "handlebars");
+
 // Routes =============================================================
 
 require("./routes/html-routes.js")(app);
