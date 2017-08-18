@@ -12,7 +12,7 @@ module.exports = function(sequelize, DataTypes) {
 	    },
 	    email: DataTypes.STRING,
 	    password: DataTypes.STRING,
-	    team: DataTypes.STRING
+	    teamname: DataTypes.STRING
 	});
 
 	 Player.associate = function(models) {

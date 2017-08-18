@@ -25,33 +25,28 @@ module.exports = function(app) {
                 playername: req.body.playername,
                 email: req.body.email,
                 password: req.body.password,
-                team: req.body.team
+                teamname: req.body.teamname
 
 
             }).then(function(dbPlayer) {
-
-                db.Team.create({
-                    teamname: req.body.teamname
-
-
-                }).then(function(dbTeam) {
-                    db.PlayerToGame.create({
-                        GameId: dbGame.id,
-                        PlayerId: dbPlayer.id,
-                        admin: true
+                db.PlayerToGame.create({
+                    GameId: dbGame.id,
+                    PlayerId: dbPlayer.id,
+                    teamname: dbPlayer.teamname,
+                    admin: true
 
 
-                    }).then(function(dbP2G) {
-                        // res.json({ dbP2G, dbTeam, dbPlayer, dbGame });
-                        res.redirect("/game/" + dbGame.id + "/player/" + dbPlayer.id)
+                }).then(function(dbP2G) {
+                    // res.json({ dbP2G, dbTeam, dbPlayer, dbGame });
+                    res.redirect("/game/" + dbGame.id + "/player/" + dbPlayer.id)
 
-                    }).catch(function(error) {
-                        res.send(error);
-                    });
+                }).catch(function(error) {
+                    res.send(error);
                 });
             });
-
         });
+
+
     });
 
 
@@ -60,7 +55,7 @@ module.exports = function(app) {
     //         res.send(error);
 
     // joinGame GETS all the games from the game table, and PUTS the new player onto the player table
-    app.get("/api/joinGame", function(req, res) {
+    app.get("/api/games", function(req, res) {
         db.Game.findAll({
             // include: [db.Team]
         }).then(function(dbGame) {
@@ -76,7 +71,7 @@ module.exports = function(app) {
             playername: req.body.playername,
             email: req.body.email,
             password: req.body.password,
-            team: req.body.team
+            teamname: req.body.teamname
         }).then(function(dbPlayer) {
 
             res.json(dbPlayer);

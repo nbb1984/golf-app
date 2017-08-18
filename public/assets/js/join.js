@@ -1,6 +1,7 @@
 $(document).ready(function() {
 
     // Getting references to the form inputs
+    var gameInput = $("game-name")
     var nameInput = $("#player-name");
     var emailInput = $("#player-email");
     var passwordInput = $("#player-password");
