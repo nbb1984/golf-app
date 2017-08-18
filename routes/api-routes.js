@@ -36,14 +36,14 @@ module.exports = function(app) {
 
                 }).then(function(dbTeam) {
                     db.PlayerToGame.create({
-                        // GameId: dbGame.Id,
-                        // PlayerId: dbPlayer.Id,
+                        GameId: dbGame.id,
+                        PlayerId: dbPlayer.id,
                         admin: true
 
 
                     }).then(function(dbP2G) {
                         // res.json({ dbP2G, dbTeam, dbPlayer, dbGame });
-                        res.redirect("/game/" + gameID + "/player/" + playerID)
+                        res.redirect("/game/" + dbGame.id + "/player/" + dbPlayer.id)
 
                     }).catch(function(error) {
                         res.send(error);
@@ -117,7 +117,7 @@ module.exports = function(app) {
     app.get("/game/:gameID/player/:playerID", function(req, res) {
         db.Game.findOne({
             where: {
-                ID: req.params.gameID
+                id: req.params.gameID
             },
             // include: [{
             //     model: db.Team
@@ -126,7 +126,7 @@ module.exports = function(app) {
             res.json(dbGame);
         });
 
-        db.Player_To_Game.findAll({
+        db.PlayerToGame.findAll({
             where: {
                 GameID: req.params.gameID
             }
