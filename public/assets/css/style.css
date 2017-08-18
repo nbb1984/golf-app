@@ -14,6 +14,37 @@
 	background-image: url("../images/grass.jpg"); 
 	background-repeat: no-repeat;
     background-attachment: fixed;
-    background-position: center;
+	background-position: 75% 100%;
+}
+
+.jumbotron {
+  border-radius: 0;
+  opacity: 0.9;
+}
+
+
+
+/* Media Queries */
+
+@media screen and (max-width: 768px) {
+
+	.container {
+	  width: 100%;
+	  max-width: 768px;
+	  margin: 0 auto;
+	}
+
+  	.main-page {
+		background-position: 75% 100%;
+	}
+
+}
+
+@media screen and (max-width: 667px) {
+
+	.main-page {
+		background-position: 75% 100%;
+	}
+
 }
 
