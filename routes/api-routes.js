@@ -35,8 +35,8 @@ module.exports = function(app) {
 
                     // Redirect to dashboard url
                 }).then(function(dbP2G) {
-                    // res.json({ dbP2G, dbTeam, dbPlayer, dbGame });
-                    res.redirect("/game/" + dbGame.id + "/player/" + dbPlayer.id)
+                    res.json({ dbP2G, dbTeam, dbPlayer, dbGame });
+                    // res.redirect("/game/" + dbGame.id + "/player/" + dbPlayer.id)
 
                     // Error
                 }).catch(function(error) {
