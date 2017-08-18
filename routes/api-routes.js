@@ -5,6 +5,11 @@ module.exports = function(app) {
 
     // ---------------------------- GET ROUTES ---------------------------- //
 
+    /// ROUTE TO INDEX
+    app.get("/", function(req, res) {
+        res.render('index');
+    });
+
     /// GET ALL GAMES
     app.get("/api/games", function(req, res) {
         db.Game.findAll({
@@ -18,7 +23,7 @@ module.exports = function(app) {
     app.get("/api/teams", function(req, res) {
         db.Team.findAll({
             // include: [db.Team]
-        }).then(function(dbTeam) {
+        }).then(function(dbTeagit m) {
             res.json(dbTeam);
         });
     });
@@ -28,7 +33,9 @@ module.exports = function(app) {
         db.Player.findAll({
             // include: [db.Team]
         }).then(function(dbPlayer) {
-            res.json(dbPlayer);
+            //res.json(dbPlayer);
+            res.render('playerstable', dbPlayer);
+
         });
     });
 
@@ -39,6 +46,27 @@ module.exports = function(app) {
         }).then(function(dbPlayerToGame) {
             res.json(dbPlayerToGame);
         });
+    });
+
+    // GETing specific info about a game.
+    app.get("/game/:gameID/player/:playerID", function(req, res) {
+        db.Game.findOne({
+            where: {
+                id: req.params.gameID
+            },
+        }).then(function(dbGame) {
+            res.json(dbGame);
+        }).then(function())
+
+        db.PlayerToGame.findAll({
+            where: {
+                GameID: req.params.gameID
+            }
+        }).then(function(dbPlayerToGame) {
+            res.json(dbPlayerToGame);
+        });
+
+
     });
 
 
@@ -54,7 +82,7 @@ module.exports = function(app) {
         console.log(req.body);
         console.log("\n\n\n>>>>");
 
-        // ADD TO PLAYER TABLE
+        // ADD TO GAME TABLE
         db.Game.create({
             coursename: req.body.coursename,
             date: req.body.date,
@@ -81,10 +109,8 @@ module.exports = function(app) {
                         teamname: dbTeam.teamname,
                         admin: true
 
-
-                    }).then(function(dbP2G) {
-                        res.json({ dbP2G, dbTeam, dbPlayer, dbGame });
-                        res.redirect("/game/" + dbGame.id + "/player/" + dbPlayer.id)
+                    }).then(function(data) {
+                        res.redirect('/')
 
                     }).catch(function(error) {
                         res.send(error);
@@ -124,23 +150,30 @@ module.exports = function(app) {
                     teamname: dbTeam.teamname,
                     admin: false
 
-                }).then(function(dbP2G) {
-                    res.json({ dbP2G, dbTeam, dbPlayer, dbGame });
-                    // res.redirect("/game/" + dbGame.id + "/player/" + dbPlayer.id)
+                }).then(function(dbP2G, dbTeam, dbPlayer, dbGame) {
+                    res.redirect('/')
 
                 }).catch(function(error) {
                     res.send(error);
                 });
             });
         });
-
     });
-
 
 
     /// ENTER SCORE TAB ON GAME
 
+    app.post("/api/enterscore/:hole", function(req, res) {
+        var scoreOfHole = {}
+        scoreOfHole[req.body.hole] = req.body.score;
+        db.PlayerToGame.update(scoreOfHole).then(function(dbPlayerToGame) {
 
+            res.json(dbPlayerToGame);
+        }).catch(function(error) {
+            res.send(error);
+        });
+
+    });
 
 
 
@@ -171,29 +204,7 @@ module.exports = function(app) {
     });
 
 
-    // GETing specific info about a game.
-    app.get("/game/:gameID/player/:playerID", function(req, res) {
-        db.Game.findOne({
-            where: {
-                id: req.params.gameID
-            },
-            // include: [{
-            //     model: db.Team
-            // }]
-        }).then(function(dbGame) {
-            res.json(dbGame);
-        });
 
-        db.PlayerToGame.findAll({
-            where: {
-                GameID: req.params.gameID
-            }
-        }).then(function(dbPlayerToGame) {
-            res.json(dbPlayerToGame);
-        });
-
-
-    });
 
     //
     app.get("/find/game/:gameID/player/:playerID", function(req, res) {
@@ -219,8 +230,4 @@ module.exports = function(app) {
         });
 
     });
-
-
-
-
-}
+};
