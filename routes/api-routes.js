@@ -3,87 +3,95 @@ var db = require("../models/index.js");
 
 module.exports = function(app) {
 
-
-    //
-    // POST for a new game. Adds Admin
+    /// CREATE A NEW GAME
     app.post("/api/newGame", function(req, res) {
 
+        // Log collected info from create game modal
         console.log("\n\n\n>>>>");
         console.log(req.body);
         console.log("\n\n\n>>>>");
 
-        // findAll returns all entries for a table when used with no options
+        // Add info to game table
         db.Game.create({
             coursename: req.body.coursename,
             date: req.body.date,
             time: req.body.time
 
-            // promise
+            // Add info to player table
         }).then(function(dbGame) {
-            //once game is posted, post to player db
             db.Player.create({
                 playername: req.body.playername,
                 email: req.body.email,
                 password: req.body.password,
-                team: req.body.team
+                teamname: req.body.teamname
 
-
+                // Add info to player to game table
             }).then(function(dbPlayer) {
+                db.PlayerToGame.create({
+                    GameId: dbGame.id,
+                    PlayerId: dbPlayer.id,
+                    teamname: dbPlayer.teamname,
+                    admin: true
 
-                db.Team.create({
-                    teamname: req.body.teamname
+                    // Redirect to dashboard url
+                }).then(function(dbP2G) {
+                    // res.json({ dbP2G, dbTeam, dbPlayer, dbGame });
+                    res.redirect("/game/" + dbGame.id + "/player/" + dbPlayer.id)
 
-
-                }).then(function(dbTeam) {
-                    db.PlayerToGame.create({
-                        // GameId: dbGame.Id,
-                        // PlayerId: dbPlayer.Id,
-                        admin: true
-
-
-                    }).then(function(dbP2G) {
-                        res.json({ dbP2G, dbTeam, dbPlayer, dbGame })
-                            .then(function() {
-                                res.redirect("/game/" + gameID + "/player/" + playerID)
-                            });
-
-                    }).catch(function(error) {
-                        res.send(error);
-                    });
+                    // Error
+                }).catch(function(error) {
+                    res.send(error);
                 });
             });
-
         });
     });
 
 
-    // res.json({dbGame, dbPlayer});
-    //       }).catch(function(error) {
-    //         res.send(error);
-
-    // joinGame GETS all the games from the game table, and PUTS the new player onto the player table
-    app.get("/api/joinGame", function(req, res) {
+    /// FIND ALL GAMES
+    app.get("/api/games", function(req, res) {
         db.Game.findAll({
             // include: [db.Team]
         }).then(function(dbGame) {
             res.json(dbGame);
         });
-
-
     });
-    //maybe working   
-    app.post("/api/joinGame", function(req, res) {
 
+    /// FIND ALL TEAMS
+    app.get("/api/teams", function(req, res) {
+        db.Player.findAll({
+            // include: [db.Team]
+        }).then(function(dbGame) {
+            res.json(dbGame);
+        });
+    });
+
+
+
+    /// JOIN A GAME 
+    app.post("/api/game/:gameID/joinGame", function(req, res) {
+
+        // Add info to player table
         db.Player.create({
             playername: req.body.playername,
             email: req.body.email,
             password: req.body.password,
-            team: req.body.team
-        }).then(function(dbPlayer) {
+            teamname: req.body.teamname
 
-            res.json(dbPlayer);
-        }).catch(function(error) {
-            res.send(error);
+
+        }).then(function(dbPlayer) {
+            db.PlayerToGame.create({
+                GameId: dbGame.id,
+                PlayerId: dbPlayer.id,
+                teamname: dbPlayer.teamname,
+                admin: true
+
+                // Redirect to dashboard url
+            }).then(function(dbPlayer) {
+
+                res.json(dbPlayer);
+            }).catch(function(error) {
+                res.send(error);
+            });
         });
     });
 
@@ -119,7 +127,7 @@ module.exports = function(app) {
     app.get("/game/:gameID/player/:playerID", function(req, res) {
         db.Game.findOne({
             where: {
-                ID: req.params.gameID
+                id: req.params.gameID
             },
             // include: [{
             //     model: db.Team
@@ -128,7 +136,7 @@ module.exports = function(app) {
             res.json(dbGame);
         });
 
-        db.Player_To_Game.findAll({
+        db.PlayerToGame.findAll({
             where: {
                 GameID: req.params.gameID
             }
