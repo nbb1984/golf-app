@@ -3,7 +3,6 @@ var db = require("../models/index.js");
 
 module.exports = function(app) {
 
-
     //
     // POST for a new game. Adds Admin
     app.post("/api/newGame", function(req, res) {
@@ -14,37 +13,37 @@ module.exports = function(app) {
       
         // findAll returns all entries for a table when used with no options
         db.Game.create({
-            course_name: req.body.courseName,
-            address: req.body.address,
+            coursename: req.body.coursename,
             date: req.body.date,
             time: req.body.time,
-            course_name: req.body.course_name
 
             // promise
         }).then(function(dbGame) {
             //once game is posted, post to player db
             db.Player.create({
-                player_name: req.body.player_name,
+                playername: req.body.playername,
                 email: req.body.email,
-                password: req.body.password
-                // team: req.body.Team_Name
+                password: req.body.password,
+                teamname: req.body.teamname
 
 
             }).then(function(dbPlayer) {
 
                 db.Team.create({
-                    team_name: req.body.team_name
+                    teamname: req.body.teamname
 
 
                 }).then(function(dbTeam) {
-                    db.Player_To_Game.create({
-                        gameId: dbGame.Id,
-                        PlayerId: dbPlayer.Id,
+                    db.PlayerToGame.create({
+                        GameId: dbGame.id,
+                        PlayerId: dbPlayer.id,
                         admin: true
 
 
                     }).then(function(dbP2G) {
-                        res.json({ dbP2G, dbTeam, dbPlayer, dbGame });
+
+                      res.redirect("/game/" + dbGame.id + "/player/" + dbPlayer.id);
+
                     }).catch(function(error) {
                         res.send(error);
                     });
@@ -73,7 +72,7 @@ module.exports = function(app) {
     app.post("/api/joinGame", function(req, res) {
 
         db.Player.create({
-            player_name: req.body.player_name,
+            playername: req.body.player_name,
             email: req.body.email,
             password: req.body.password,
             team: req.body.team
@@ -104,9 +103,9 @@ module.exports = function(app) {
             },
         }).then(function(dbPlayer) {
 
-            if (username) {
-                res.redirect("/game/" + gameID + "/player/" + playerID)
-            }
+            // if (username) {
+            //     res.redirect("/game/" + vargameID + "/player/" + varplayerID)
+            // }
 
             res.json(dbPlayer);
         });
@@ -123,15 +122,13 @@ module.exports = function(app) {
             //     model: db.Team
             // }]
         }).then(function(dbGame) {
-            res.json(dbGame);
-        });
-
-        db.Player_To_Game.findAll({
-            where: {
-                GameID: req.params.gameID
-            }
-        }).then(function(dbPlayerToGame) {
-            res.json(dbPlayerToGame);
+            db.Player_To_Game.findAll({
+                where: {
+                    GameID: req.params.gameID,
+                    PlayerId: req.params.playerID
+                }
+            }).then(function(dbPlayerToGame) {
+            });            
         });
 
 
@@ -141,7 +138,7 @@ module.exports = function(app) {
     app.get("/find/game/:gameID/player/:playerID", function(req, res) {
         db.Player_To_Game.findAll({
             include: db.Player,
-            include: db.Team,
+            // include: db.Team,
             where: {
                 GameID: req.params.gameID
             }

@@ -15,75 +15,76 @@ module.exports = function(sequelize, DataTypes) {
     //   type: DataTypes.INTEGER,
     //   allowNull: false
     //},
-    Hole1: {
+    admin: DataTypes.BOOLEAN,
+    hole1: {
       type: DataTypes.INTEGER,
       allowNull: true
     },
-    Hole2: {
+    hole2: {
       type: DataTypes.INTEGER,
       allowNull: true
     },
-    Hole3: {
+    hole3: {
       type: DataTypes.INTEGER,
       allowNull: true
     },
-    Hole4: {
+    hole4: {
       type: DataTypes.INTEGER,
       allowNull: true
     },
-    Hole5: {
+    hole5: {
       type: DataTypes.INTEGER,
       allowNull: true
     },
-    Hole6: {
+    hole6: {
       type: DataTypes.INTEGER,
       allowNull: true
     },
-    Hole7: {
+    hole7: {
       type: DataTypes.INTEGER,
       allowNull: true
     },
-    Hole8: {
+    hole8: {
       type: DataTypes.INTEGER,
       allowNull: true
     },
-    Hole9: {
+    hole9: {
       type: DataTypes.INTEGER,
       allowNull: true
     },
-    Hole10: {
+    hole10: {
       type: DataTypes.INTEGER,
       allowNull: true
     },
-    Hole11: {
+    hole11: {
       type: DataTypes.INTEGER,
       allowNull: true
     },
-    Hole12: {
+    hole12: {
       type: DataTypes.INTEGER,
       allowNull: true
     },
-    Hole13: {
+    hole13: {
       type: DataTypes.INTEGER,
       allowNull: true
     },
-    Hole14: {
+    hole14: {
       type: DataTypes.INTEGER,
       allowNull: true
     },
-    Hole15: {
+    hole15: {
       type: DataTypes.INTEGER,
       allowNull: true
     },
-    Hole16: {
+    hole16: {
       type: DataTypes.INTEGER,
       allowNull: true
     },
-    Hole17: {
+    hole17: {
       type: DataTypes.INTEGER,
       allowNull: true
     },
-    Hole18: {
+    hole18: {
       type: DataTypes.INTEGER,
       allowNull: true
     },

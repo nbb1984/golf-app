@@ -78,16 +78,16 @@
                             <form method ="POST" action="/api/newGame" id="form--event-add">
                                 <div class="input-group">
                                     <label class="input-group-addon" for="course">Player Information</label>
-                                    <input type="text" id="player-name" name="createEventPlayer" class="form-control" placeholder="Player Name">
-                                    <input type="text" id="player-email" name="createEventEmail" class="form-control" placeholder="Email Address">
-                                    <input type="text" id="player-password" name="createEventPassword" class="form-control" placeholder="Password">
+                                    <input type="text" id="player-name" name="playername" class="form-control" placeholder="Player Name">
+                                    <input type="text" id="player-email" name="email" class="form-control" placeholder="Email Address">
+                                    <input type="text" id="player-password" name="password" class="form-control" placeholder="Password">
                                 </div>
                                 <div class="input-group">
                                     <label class="input-group-addon" for="player">Event Information</label>
-                                    <input type="text" id="team-name" name="createEventTeam" class="form-control" placeholder="Team Name">
-                                    <input type="text" id="course-name" name="createEventTeam" class="form-control" placeholder="Course Name">
-                                    <input type="text" id="event-date" name="createEventDate" class="form-control" placeholder="Date">
-                                    <input type="text" id="event-time" name="createEventTime" class="form-control" placeholder="Time">
+                                    <input type="text" id="team-name" name="teamname" class="form-control" placeholder="Team Name">
+                                    <input type="text" id="course-name" name="coursename" class="form-control" placeholder="Course Name">
+                                    <input type="text" id="event-date" name="date" class="form-control" placeholder="Date">
+                                    <input type="text" id="event-time" name="time" class="form-control" placeholder="Time">
 
 
                                 </div>
@@ -115,10 +115,10 @@
                             <form method="GET" action="/api/joinGame" id="join-form">
                                 <div class="input-group">
                                     <label class="input-group-addon" for="course">Your Information</label>
-                                    <input type="text" id="player-name" name="joinName" class="form-control" placeholder="Name">
-                                    <input type="text" id="player-email" name="joinPlayer" class="form-control" placeholder="Email">
-                                    <input type="text" id="player-password" name="joinPassword" class="form-control" placeholder="Password">
-                                    <input type="text" id="team-name" name="joinTeamName" class="form-control" placeholder="Team Join/Create">
+                                    <input type="text" id="player-name" name="name" class="form-control" placeholder="Name">
+                                    <input type="text" id="player-email" name="email" class="form-control" placeholder="Email">
+                                    <input type="text" id="player-password" name="password" class="form-control" placeholder="Password">
+                                    <input type="text" id="team-name" name="teamname" class="form-control" placeholder="Team Join/Create">
                                 </div>
                                 <!-- Submit Button -->
                                 <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
@@ -144,8 +144,8 @@
                             <form method="GET" action="/api/login" id="login-form">
                                 <div class="input-group">
                                     <label class="input-group-addon" for="course">Your Information</label>
-                                    <input type="text" id="player-email" name="loginEmail" class="form-control" placeholder="Email">
-                                    <input type="text" id="player-password" name="loginPassword" class="form-control" placeholder="Password">
+                                    <input type="text" id="player-email" name="email" class="form-control" placeholder="Email">
+                                    <input type="text" id="player-password" name="password" class="form-control" placeholder="Password">
                                 </div>
                                 <!-- Submit Button -->
                                 <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>

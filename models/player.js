@@ -6,9 +6,9 @@ module.exports = function(sequelize, DataTypes) {
 	   player_name: {
 	        type: DataTypes.STRING,
 	        allowNull: true,
-	        validate: {
-	            len: [1, 140]
-	        }
+	        // validate: {
+	        //     len: [1, 140]
+	        // }
 	    },
 	    email: DataTypes.STRING,
 	    password: DataTypes.STRING,
