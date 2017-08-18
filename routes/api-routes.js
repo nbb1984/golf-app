@@ -110,7 +110,10 @@ module.exports = function(app) {
 
                     }).then(function(dbP2G) {
 
+
                         res.redirect("/game/:gameID/player/:playerID");
+
+
 
                     }).catch(function(error) {
                         res.send(error);
@@ -150,8 +153,11 @@ module.exports = function(app) {
                     admin: false
 
                 }).then(function(dbP2G) {
+
                     // res.json({ dbP2G, dbTeam, dbPlayer, dbGame });
                     res.redirect("/game/:gameID/player/:playerID");
+
+
 
                 }).catch(function(error) {
                     res.send(error);
