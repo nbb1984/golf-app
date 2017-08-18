@@ -56,7 +56,7 @@ module.exports = function(app) {
         console.log(req.body);
         console.log("\n\n\n>>>>");
 
-        // ADD TO GAME TABLE
+        // ADD TO PLAYER TABLE
         db.Game.create({
             coursename: req.body.coursename,
             date: req.body.date,
@@ -85,7 +85,7 @@ module.exports = function(app) {
 
 
                     }).then(function(dbP2G) {
-                        // res.json({ dbP2G, dbTeam, dbPlayer, dbGame });
+                        res.json({ dbP2G, dbTeam, dbPlayer, dbGame });
                         res.redirect("/game/" + dbGame.id + "/player/" + dbPlayer.id)
 
                     }).catch(function(error) {
@@ -102,32 +102,47 @@ module.exports = function(app) {
 
     app.post("/api/joinGame", function(req, res) {
 
+        console.log("\n\n\n>>>>");
+        console.log(req.body);
+        console.log("\n\n\n>>>>");
+
+        // ADD TO GAME TABLE
         db.Player.create({
             playername: req.body.playername,
             email: req.body.email,
             password: req.body.password,
-            team: req.body.team
-        }).then(function(dbPlayer) {
+            teamname: req.body.teamname
 
-            res.json(dbPlayer);
-        }).catch(function(error) {
-            res.send(error);
+            // ADD TO PLAYER TABLE
+        }).then(function(dbPlayer) {
+            db.Team.create({
+                teamname: req.body.teamname
+
+                // ADD TO PLAYER TO
+            }).then(function(dbTeam) {
+                db.PlayerToGame.create({
+                    GameId: req.body.gameID,
+                    PlayerId: dbPlayer.id,
+                    teamname: dbTeam.teamname,
+                    admin: false
+
+                }).then(function(dbP2G) {
+                    res.json({ dbP2G, dbTeam, dbPlayer, dbGame });
+                    // res.redirect("/game/" + dbGame.id + "/player/" + dbPlayer.id)
+
+                }).catch(function(error) {
+                    res.send(error);
+                });
+            });
         });
+
     });
+
+
 
     /// ENTER SCORE TAB ON GAME
 
-    app.post("/api/enterscore/:hole", function(req, res) {
-        var scoreOfHole = {}
-        scoreOfHole[req.body.hole] = req.body.score;
-        db.PlayerToGame.update(scoreOfHole).then(function(dbPlayerToGame) {
 
-            res.json(dbPlayerToGame);
-        }).catch(function(error) {
-            res.send(error);
-        });
-
-    });
 
 
 

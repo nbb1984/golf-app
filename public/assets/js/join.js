@@ -9,8 +9,8 @@ $(document).ready(function() {
 
     // Adding event listeners to the form to create a new object, and the button to delete
     // an Author
-    /*    $(document).on("submit", "#join-form", handleGameFormSubmit);
-     */
+        $(document).on("submit", "#join-form", handleGameFormSubmit);
+     
     // A function to handle what happens when the form is submitted to join a game
     function handleJoinFormSubmit(event) {
 
@@ -24,6 +24,10 @@ $(document).ready(function() {
         // Calling the joinGame function and passing in the values in the join input
 
         joinGame({
+            /// GAME DB
+            gameID: gameInput
+                .val()
+                .trim(),
             /// PLAYER DB
             playername: nameInput
                 .val()
