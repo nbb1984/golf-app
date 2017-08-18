@@ -21,10 +21,10 @@ module.exports = function(sequelize, DataTypes) {
 			onDelete: "cascade"
 	    });
 
-	    Player.belongsToMany (models.Team, {
-			through: "playTeam",
-			onDelete: "cascade"
-	    });
+	  //   Player.belongsToMany (models.Team, {
+			// through: "playTeam",
+			// onDelete: "cascade"
+	  //   });
 	  };
 	  return Player; 
 };
