@@ -78,6 +78,7 @@ module.exports = function(app) {
                     db.PlayerToGame.create({
                         GameId: dbGame.id,
                         PlayerId: dbPlayer.id,
+                        teamname: dbTeam.teamname,
                         admin: true
 
 
