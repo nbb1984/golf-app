@@ -28,8 +28,10 @@ module.exports = function(app) {
         db.Player.findAll({
             // include: [db.Team]
         }).then(function(dbPlayer) {
-            res.json(dbPlayer);
-        });
+            //res.json(dbPlayer);
+            res.render('playerstable', dbPlayer);
+            
+         });
     });
 
     /// GET ALL PLAYERTOGAME
