@@ -96,7 +96,7 @@ module.exports = function(sequelize, DataTypes) {
             allowNull: true
         },
         teamname: {
-            type: DataTypes.BOOLEAN,
+            type: DataTypes.STRING,
             allowNull: true
         }
     });
