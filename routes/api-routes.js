@@ -14,20 +14,18 @@ module.exports = function(app) {
       
         // findAll returns all entries for a table when used with no options
         db.Game.create({
-            course_name: req.body.courseName,
-            address: req.body.address,
+            course_name: req.body.coursename,
             date: req.body.date,
-            time: req.body.time,
-            course_name: req.body.course_name
+            time: req.body.time
 
             // promise
         }).then(function(dbGame) {
             //once game is posted, post to player db
             db.Player.create({
-                player_name: req.body.player_name,
-                email: req.body.email,
-                password: req.body.password
-                // team: req.body.Team_Name
+                player_name: req.body.PlayerName,
+                email: req.body.Email,
+                password: req.body.Password
+                team: req.body.teamname
 
 
             }).then(function(dbPlayer) {
@@ -43,11 +41,24 @@ module.exports = function(app) {
                         admin: true
 
 
-                    }).then(function(dbP2G) {
-                        res.json({ dbP2G, dbTeam, dbPlayer, dbGame });
-                    }).catch(function(error) {
-                        res.send(error);
-                    });
+                    }).then(function(result) {
+                        db.Game.findOne({
+                            where: {
+                                id: dbPlayer.Id
+                            }
+                        })
+                        var gameId = dbGame.Id;
+                        var playerId = dbPlayer.Id;
+                        if (gameId && playerId) {
+                            res.redirect("/game/" + gameId + "/player/" + playerId)
+                        }
+                            res.json(dbPlayer);
+                        });.then(function(dbP2G) {
+                            res.json({ dbP2G, dbTeam, dbPlayer, dbGame });
+                            res.redirect()
+                        }).catch(function(error) {
+                            res.send(error);
+                        });
                 });
             });
 
@@ -59,17 +70,17 @@ module.exports = function(app) {
     //       }).catch(function(error) {
     //         res.send(error);
 
-    // joinGame GETS all the games from the game table, and PUTS the new player onto the player table
     app.get("/api/joinGame", function(req, res) {
         db.Game.findAll({
-            // include: [db.Team]
+            //include: [db.Team]
         }).then(function(dbGame) {
             res.json(dbGame);
         });
 
 
     });
-    //maybe working   
+
+
     app.post("/api/joinGame", function(req, res) {
 
         db.Player.create({
@@ -94,7 +105,7 @@ module.exports = function(app) {
                 name: req.body.name,
                 password: req.body.password,
             }
-        })
+        }).then (function(dbPlayer) {
 
 
 
@@ -102,10 +113,12 @@ module.exports = function(app) {
             where: {
                 id: req.params.id
             },
-        }).then(function(dbPlayer) {
 
+        }).then(function(dbPlayer) {
+            var gameid = db.Player_To_Game;
+            var playerid = ;
             if (username) {
-                res.redirect("/game/" + gameID + "/player/" + playerID)
+                res.redirect("/game/" + gameid + "/player/" + playerid)
             }
 
             res.json(dbPlayer);
@@ -119,9 +132,9 @@ module.exports = function(app) {
             where: {
                 ID: req.params.gameID
             },
-            // include: [{
-            //     model: db.Team
-            // }]
+            include: [{
+                model: db.Team
+            }]
         }).then(function(dbGame) {
             res.json(dbGame);
         });

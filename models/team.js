@@ -18,10 +18,10 @@ module.exports = function(sequelize, DataTypes) {
       onDelete: "cascade"
     });
     
-    Team.belongsToMany(models.Game, {
-      through:"teamGame",
-      onDelete: "cascade"
-    });
+    // Team.belongsToMany(models.Game, {
+    //   through:"teamGame",
+    //   onDelete: "cascade"
+    // });
   };
   return Team;
 };
