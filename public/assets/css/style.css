@@ -12,4 +12,7 @@
 
 .main-page {
 	background-image: url("../images/grass.jpg"); 
+	background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-position: center;
 }
