@@ -3,37 +3,33 @@ var db = require("../models/index.js");
 
 module.exports = function(app) {
 
-
-    //
-    // POST for a new game. Adds Admin
+    /// CREATE NEW GAME FROM BUTTON ON INDEX
     app.post("/api/newGame", function(req, res) {
 
         console.log("\n\n\n>>>>");
         console.log(req.body);
         console.log("\n\n\n>>>>");
 
-        // findAll returns all entries for a table when used with no options
+        // ADD TO GAME TABLE
         db.Game.create({
             coursename: req.body.coursename,
             date: req.body.date,
             time: req.body.time
 
-            // promise
+            // ADD TO PLAYER TABLE
         }).then(function(dbGame) {
-            //once game is posted, post to player db
             db.Player.create({
                 playername: req.body.playername,
                 email: req.body.email,
                 password: req.body.password,
-                team: req.body.team
+                teamname: req.body.teamname
 
-
+                // ADD TO TEAM TABLE
             }).then(function(dbPlayer) {
-
                 db.Team.create({
                     teamname: req.body.teamname
 
-
+                    // ADD TO PLAYER TO
                 }).then(function(dbTeam) {
                     db.PlayerToGame.create({
                         GameId: dbGame.id,
