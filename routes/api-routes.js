@@ -32,12 +32,22 @@ module.exports = function(app) {
         });
     });
 
+    /// GET ALL PLAYERTOGAME
+    app.get("/api/playertogame", function(req, res) {
+        db.PlayerToGame.findAll({
+            // include: [db.Team]
+        }).then(function(dbPlayerToGame) {
+            res.json(dbPlayerToGame);
+        });
+    });
+
 
 
     // ---------------------------- POST ROUTES ---------------------------- //
 
 
     /// CREATE NEW GAME FROM BUTTON ON INDEX
+
     app.post("/api/newGame", function(req, res) {
 
         console.log("\n\n\n>>>>");
@@ -85,10 +95,8 @@ module.exports = function(app) {
     });
 
 
+    /// JOIN GAME FROM BUTTON ON INDEX
 
-
-
-    //maybe working   
     app.post("/api/joinGame", function(req, res) {
 
         db.Player.create({
@@ -104,6 +112,23 @@ module.exports = function(app) {
         });
     });
 
+    /// ENTER SCORE TAB ON GAME
+
+    app.post("/api/enterscore/:hole", function(req, res) {
+        var scoreOfHole = {}
+        scoreOfHole[req.body.hole] = req.body.score;
+        db.PlayerToGame.update(scoreOfHole).then(function(dbPlayerToGame) {
+
+            res.json(dbPlayerToGame);
+        }).catch(function(error) {
+            res.send(error);
+        });
+
+    });
+
+
+
+    // ---------------------------- INCOMPLETE ---------------------------- //
 
     // GETS users for handling log-in info. // may have to be restructured.
     app.get("/api/login", function(req, res) {
@@ -114,8 +139,6 @@ module.exports = function(app) {
                 password: req.body.password,
             }
         })
-
-
 
         db.Game.findOne({
             where: {
