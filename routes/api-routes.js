@@ -83,7 +83,7 @@ module.exports = function(app) {
 
 
                     }).then(function(dbP2G) {
-                        // res.json({ dbP2G, dbTeam, dbPlayer, dbGame });
+                        res.json({ dbP2G, dbTeam, dbPlayer, dbGame });
                         res.redirect("/game/" + dbGame.id + "/player/" + dbPlayer.id)
 
                     }).catch(function(error) {
@@ -125,8 +125,8 @@ module.exports = function(app) {
                     admin: false
 
                 }).then(function(dbP2G) {
-                    // res.json({ dbP2G, dbTeam, dbPlayer, dbGame });
-                    res.redirect("/game/" + dbGame.id + "/player/" + dbPlayer.id)
+                    res.json({ dbP2G, dbTeam, dbPlayer, dbGame });
+                    // res.redirect("/game/" + dbGame.id + "/player/" + dbPlayer.id)
 
                 }).catch(function(error) {
                     res.send(error);
