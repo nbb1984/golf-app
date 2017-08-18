@@ -115,17 +115,7 @@ module.exports = function(app) {
 
     /// ENTER SCORE TAB ON GAME
 
-    app.post("/api/enterscore/:hole", function(req, res) {
-        var scoreOfHole = {}
-        scoreOfHole[req.body.hole] = req.body.score;
-        db.PlayerToGame.update(scoreOfHole).then(function(dbPlayerToGame) {
 
-            res.json(dbPlayerToGame);
-        }).catch(function(error) {
-            res.send(error);
-        });
-
-    });
 
 
 

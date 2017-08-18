@@ -24,6 +24,10 @@ $(document).ready(function() {
         // Calling the joinGame function and passing in the values in the join input
 
         joinGame({
+            /// GAME DB
+            gameID: gameInput
+                .val()
+                .trim(),
             /// PLAYER DB
             playername: nameInput
                 .val()
