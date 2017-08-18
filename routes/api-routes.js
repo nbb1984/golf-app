@@ -3,51 +3,9 @@ var db = require("../models/index.js");
 
 module.exports = function(app) {
 
-    /// CREATE A NEW GAME
-    app.post("/api/newGame", function(req, res) {
+    // ---------------------------- GET ROUTES ---------------------------- //
 
-        // Log collected info from create game modal
-        console.log("\n\n\n>>>>");
-        console.log(req.body);
-        console.log("\n\n\n>>>>");
-
-        // Add info to game table
-        db.Game.create({
-            coursename: req.body.coursename,
-            date: req.body.date,
-            time: req.body.time
-
-            // Add info to player table
-        }).then(function(dbGame) {
-            db.Player.create({
-                playername: req.body.playername,
-                email: req.body.email,
-                password: req.body.password,
-                teamname: req.body.teamname
-
-                // Add info to player to game table
-            }).then(function(dbPlayer) {
-                db.PlayerToGame.create({
-                    GameId: dbGame.id,
-                    PlayerId: dbPlayer.id,
-                    teamname: dbPlayer.teamname,
-                    admin: true
-
-                    // Redirect to dashboard url
-                }).then(function(dbP2G) {
-                    res.json({ dbP2G, dbTeam, dbPlayer, dbGame });
-                    // res.redirect("/game/" + dbGame.id + "/player/" + dbPlayer.id)
-
-                    // Error
-                }).catch(function(error) {
-                    res.send(error);
-                });
-            });
-        });
-    });
-
-
-    /// FIND ALL GAMES
+    /// GET ALL GAMES
     app.get("/api/games", function(req, res) {
         db.Game.findAll({
             // include: [db.Team]
@@ -56,45 +14,137 @@ module.exports = function(app) {
         });
     });
 
-    /// FIND ALL TEAMS
+    /// GET ALL TEAMS
     app.get("/api/teams", function(req, res) {
+        db.Team.findAll({
+            // include: [db.Team]
+        }).then(function(dbTeam) {
+            res.json(dbTeam);
+        });
+    });
+
+    /// GET ALL PLAYERS
+    app.get("/api/players", function(req, res) {
         db.Player.findAll({
             // include: [db.Team]
-        }).then(function(dbGame) {
-            res.json(dbGame);
+        }).then(function(dbPlayer) {
+            res.json(dbPlayer);
+        });
+    });
+
+    /// GET ALL PLAYERTOGAME
+    app.get("/api/playertogame", function(req, res) {
+        db.PlayerToGame.findAll({
+            // include: [db.Team]
+        }).then(function(dbPlayerToGame) {
+            res.json(dbPlayerToGame);
         });
     });
 
 
 
-    /// JOIN A GAME 
-    app.post("/api/game/:gameID/joinGame", function(req, res) {
+    // ---------------------------- POST ROUTES ---------------------------- //
 
-        // Add info to player table
+
+    /// CREATE NEW GAME FROM BUTTON ON INDEX
+
+    app.post("/api/newGame", function(req, res) {
+
+        console.log("\n\n\n>>>>");
+        console.log(req.body);
+        console.log("\n\n\n>>>>");
+
+        // ADD TO PLAYER TABLE
+        db.Game.create({
+            coursename: req.body.coursename,
+            date: req.body.date,
+            time: req.body.time
+
+            // ADD TO PLAYER TABLE
+        }).then(function(dbGame) {
+            db.Player.create({
+                playername: req.body.playername,
+                email: req.body.email,
+                password: req.body.password,
+                teamname: req.body.teamname
+
+                // ADD TO TEAM TABLE
+            }).then(function(dbPlayer) {
+                db.Team.create({
+                    teamname: req.body.teamname
+
+                    // ADD TO PLAYER TO
+                }).then(function(dbTeam) {
+                    db.PlayerToGame.create({
+                        GameId: dbGame.id,
+                        PlayerId: dbPlayer.id,
+                        teamname: dbTeam.teamname,
+                        admin: true
+
+
+                    }).then(function(dbP2G) {
+                        // res.json({ dbP2G, dbTeam, dbPlayer, dbGame });
+                        res.redirect("/game/" + dbGame.id + "/player/" + dbPlayer.id)
+
+                    }).catch(function(error) {
+                        res.send(error);
+                    });
+                });
+            });
+
+        });
+    });
+
+
+    /// JOIN GAME FROM BUTTON ON INDEX
+
+    app.post("/api/joinGame", function(req, res) {
+
+        console.log("\n\n\n>>>>");
+        console.log(req.body);
+        console.log("\n\n\n>>>>");
+
+        // ADD TO GAME TABLE
         db.Player.create({
             playername: req.body.playername,
             email: req.body.email,
             password: req.body.password,
             teamname: req.body.teamname
 
-
+            // ADD TO PLAYER TABLE
         }).then(function(dbPlayer) {
-            db.PlayerToGame.create({
-                GameId: dbGame.id,
-                PlayerId: dbPlayer.id,
-                teamname: dbPlayer.teamname,
-                admin: true
+            db.Team.create({
+                teamname: req.body.teamname
 
-                // Redirect to dashboard url
-            }).then(function(dbPlayer) {
+                // ADD TO PLAYER TO
+            }).then(function(dbTeam) {
+                db.PlayerToGame.create({
+                    GameId: req.body.gameID,
+                    PlayerId: dbPlayer.id,
+                    teamname: dbTeam.teamname,
+                    admin: false
 
-                res.json(dbPlayer);
-            }).catch(function(error) {
-                res.send(error);
+                }).then(function(dbP2G) {
+                    // res.json({ dbP2G, dbTeam, dbPlayer, dbGame });
+                    res.redirect("/game/" + dbGame.id + "/player/" + dbPlayer.id)
+
+                }).catch(function(error) {
+                    res.send(error);
+                });
             });
         });
+
     });
 
+
+
+    /// ENTER SCORE TAB ON GAME
+
+
+
+
+
+    // ---------------------------- INCOMPLETE ---------------------------- //
 
     // GETS users for handling log-in info. // may have to be restructured.
     app.get("/api/login", function(req, res) {
@@ -105,8 +155,6 @@ module.exports = function(app) {
                 password: req.body.password,
             }
         })
-
-
 
         db.Game.findOne({
             where: {

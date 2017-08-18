@@ -2,7 +2,7 @@
 <html lang="en">
 
 <head>
-<meta charset="UTF-8">
+    <meta charset="UTF-8">
     <title>Golf Scoreboard</title>
     <link rel="stylesheet" type="text/css" href="assets/css/reset.css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
@@ -18,19 +18,15 @@
 </head>
 
 <body class="main-page">
-
     <div class="jumbotron">
         <div class="container">
             <h1>Golf Scoreboard</h1>
         </div>
     </div>
-
     <div class="container">
-
         <div class="row">
             <!-- start main column -->
             <div class="col-md-12">
-
                 <!-- start 1st row
                 <div class="row">
                     <div class="jumbotron">
@@ -38,7 +34,6 @@
                     </div>
                 </div>
                 end 1st row -->
-
                 <!-- start 2nd row -->
                 <div class="row">
                     <!-- start 1st sub-column -->
@@ -49,13 +44,12 @@
                     <!-- end 1st sub-column -->
                     <!-- start 2nd sub-column -->
                     <div class="col-md-6">
-                    <!-- join button -->
+                        <!-- join button -->
                         <button type="button" class="btn btn-default btn-lg btn-block" id="button-join" data-toggle='modal' data-target='#modal--join'>Join an Event</button>
                     </div>
                     <!-- end 2nd sub-column -->
                 </div>
                 <!-- end 2nd row -->
-
                 <!-- start 3rd row -->
                 <div class="row">
                     <!-- start sub-col -->
@@ -66,105 +60,103 @@
                     <!-- end sub-col -->
                 </div>
                 <!-- end 3rd row -->
-
             </div>
             <!-- end main column -->
         </div>
+        git
         <!-- end main row -->
         <!-- Modal for Create Feature -->
-    <div class="modal fade" id="modal--create" tabindex="-1" role="dialog" aria-labelledby="modal--create">
-        <div class="modal-dialog" role="document">
-            <div class="modal-content">
-                <div class="modal-body">
-                    <div class="panel panel-default">
-                        <div class="panel-heading">
-                            <h3 class="panel-title">Enter Information on Your Event</h3>
-                        </div>
-                        <div class="panel-body">
-                            <form method ="POST" action="/api/newGame" id="form--event-add">
-                                <div class="input-group">
-                                    <label class="input-group-addon" for="course">Player Information</label>
-                                    <input type="text" id="player-name" name="playername" class="form-control" placeholder="Player Name">
-                                    <input type="text" id="player-email" name="email" class="form-control" placeholder="Email Address">
-                                    <input type="text" id="player-password" name="password" class="form-control" placeholder="Password">
-                                </div>
-                                <div class="input-group">
-                                    <label class="input-group-addon" for="player">Event Information</label>
-                                    <input type="text" id="team-name" name="teamname" class="form-control" placeholder="Team Name">
-                                    <input type="text" id="course-name" name="coursename" class="form-control" placeholder="Course Name">
-                                    <input type="text" id="event-date" name="date" class="form-control" placeholder="Date">
-                                    <input type="text" id="event-time" name="time" class="form-control" placeholder="Time">
-
-
-                                </div>
-                                <!-- Submit Button -->
-                                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                                <button class="btn btn-default" type="submit" id="form--event-add">Submit</button>
-                            </form>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <!-- End Create Modal -->
-    <!-- Modal for Join Feature -->
-    <div class="modal fade" id="modal--join" tabindex="-1" role="dialog" aria-labelledby="modal--join">
-        <div class="modal-dialog" role="document">
-            <div class="modal-content">
-                <div class="modal-body">
-                    <div class="panel panel-default">
-                        <div class="panel-heading">
-                            <h3 class="panel-title">Join an Event</h3>
-                        </div>
-                        <div class="panel-body">
-                            <form method="GET" action="/api/joinGame" id="join-form">
-                                <div class="input-group">
-                                    <label class="input-group-addon" for="course">Your Information</label>
-                                    <input type="text" id="player-name" name="joinName" class="form-control" placeholder="Name">
-                                    <input type="text" id="player-email" name="joinPlayer" class="form-control" placeholder="Email">
-                                    <input type="text" id="player-password" name="joinPassword" class="form-control" placeholder="Password">
-                                    <input type="text" id="team-name" name="joinTeamName" class="form-control" placeholder="Team Join/Create">
-                                </div>
-                                <!-- Submit Button -->
-                                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                                <button class="btn btn-default" type="submit" id="join-form">Submit</button>
-                            </form>
+        <div class="modal fade" id="modal--create" tabindex="-1" role="dialog" aria-labelledby="modal--create">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-body">
+                        <div class="panel panel-default">
+                            <div class="panel-heading">
+                                <h3 class="panel-title">Enter Information on Your Event</h3>
+                            </div>
+                            <div class="panel-body">
+                                <form method="POST" action="/api/newGame" id="form--event-add">
+                                    <div class="input-group">
+                                        <label class="input-group-addon" for="course">Player Information</label>
+                                        <input type="text" id="player-name" name="playername" class="form-control" placeholder="Player Name">
+                                        <input type="text" id="player-email" name="email" class="form-control" placeholder="Email Address">
+                                        <input type="text" id="player-password" name="password" class="form-control" placeholder="Password">
+                                    </div>
+                                    <div class="input-group">
+                                        <label class="input-group-addon" for="player">Event Information</label>
+                                        <input type="text" id="team-name" name="teamname" class="form-control" placeholder="Team Name">
+                                        <input type="text" id="course-name" name="coursename" class="form-control" placeholder="Course Name">
+                                        <input type="text" id="event-date" name="date" class="form-control" placeholder="Date">
+                                        <input type="text" id="event-time" name="time" class="form-control" placeholder="Time">
+                                    </div>
+                                    <!-- Submit Button -->
+                                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                                    <button class="btn btn-default" type="submit" id="form--event-add">Submit</button>
+                                </form>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
-    <!-- End Join Modal -->
-    <!-- Modal for Login -->
-   <div class="modal fade" id="modal--login" tabindex="-1" role="dialog" aria-labelledby="modal--login">
-        <div class="modal-dialog" role="document">
-            <div class="modal-content">
-                <div class="modal-body">
-                    <div class="panel panel-default">
-                        <div class="panel-heading">
-                            <h3 class="panel-title">Login</h3>
-                        </div>
-                        <div class="panel-body">
-                            <form method="GET" action="/api/login" id="login-form">
-                                <div class="input-group">
-                                    <label class="input-group-addon" for="course">Your Information</label>
-                                    <input type="text" id="player-email" name="loginEmail" class="form-control" placeholder="Email">
-                                    <input type="text" id="player-password" name="loginPassword" class="form-control" placeholder="Password">
-                                </div>
-                                <!-- Submit Button -->
-                                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                                <button class="btn btn-default" type="submit" id="login-form">Submit</button>
-                            </form>
+        <!-- End Create Modal -->
+        <!-- Modal for Join Feature -->
+        <div class="modal fade" id="modal--join" tabindex="-1" role="dialog" aria-labelledby="modal--join">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-body">
+                        <div class="panel panel-default">
+                            <div class="panel-heading">
+                                <h3 class="panel-title">Join an Event</h3>
+                            </div>
+                            <div class="panel-body">
+                                <form method="POST" action="/api/joinGame" id="join-form">
+                                    <div class="input-group">
+                                        <label class="input-group-addon" for="course">Your Information</label>
+                                        <input type="text" id="game-name" name="gameID" class="form-control" placeholder="GameID">
+                                        <input type="text" id="player-name" name="playername" class="form-control" placeholder="Name">
+                                        <input type="text" id="player-email" name="email" class="form-control" placeholder="Email">
+                                        <input type="text" id="player-password" name="joinPassword" class="form-control" placeholder="password">
+                                        <input type="text" id="team-name" name="teamname" class="form-control" placeholder="Team Join/Create">
+                                    </div>
+                                    <!-- Submit Button -->
+                                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                                    <button class="btn btn-default" type="submit" id="join-form">Submit</button>
+                                </form>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
-    <!-- End Modal for Login -->
-
+        <!-- End Join Modal -->
+        <!-- Modal for Login -->
+        <div class="modal fade" id="modal--login" tabindex="-1" role="dialog" aria-labelledby="modal--login">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-body">
+                        <div class="panel panel-default">
+                            <div class="panel-heading">
+                                <h3 class="panel-title">Login</h3>
+                            </div>
+                            <div class="panel-body">
+                                <form method="GET" action="/api/login" id="login-form">
+                                    <div class="input-group">
+                                        <label class="input-group-addon" for="course">Your Information</label>
+                                        <input type="text" id="player-email" name="loginEmail" class="form-control" placeholder="Email">
+                                        <input type="text" id="player-password" name="loginPassword" class="form-control" placeholder="Password">
+                                    </div>
+                                    <!-- Submit Button -->
+                                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                                    <button class="btn btn-default" type="submit" id="login-form">Submit</button>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- End Modal for Login -->
     </div>
     <!-- end main container -->
 </body>

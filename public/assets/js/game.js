@@ -33,6 +33,9 @@ $(document).ready(function() {
             date: eventDate
                 .val()
                 .trim(),
+            time: eventTime
+                .val()
+                .trim(),
             /// PLAYER DB
             playername: nameInput
                 .val()
