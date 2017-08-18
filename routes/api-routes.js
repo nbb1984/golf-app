@@ -48,6 +48,26 @@ module.exports = function(app) {
         });
     });
 
+    /// SEND TO GAME PAGE
+    app.get("/game/:gameID/player/:playerID", function(req, res) {
+        db.Game.findOne({
+            where: {
+                id: req.params.gameID
+            },
+        }).then(function(dbGame) {
+            db.PlayerToGame.findAll({
+                    where: {
+                        GameID: req.params.gameID,
+                        PlayerID: req.params.playerID
+                    }
+                })
+                .then(function(dbGame, dbPlayerToGame) {
+                    res.render("index");
+                });
+        });
+
+    });
+
 
 
     // ---------------------------- POST ROUTES ---------------------------- //
@@ -90,14 +110,13 @@ module.exports = function(app) {
 
                     }).then(function(dbP2G) {
 
-                        res.redirect("/");
+                        res.redirect("/game/:gameID/player/:playerID");
 
                     }).catch(function(error) {
                         res.send(error);
                     });
                 });
             });
-
         });
     });
 
@@ -132,7 +151,7 @@ module.exports = function(app) {
 
                 }).then(function(dbP2G) {
                     // res.json({ dbP2G, dbTeam, dbPlayer, dbGame });
-                    res.redirect("/");
+                    res.redirect("/game/:gameID/player/:playerID");
 
                 }).catch(function(error) {
                     res.send(error);
