@@ -7,7 +7,7 @@ module.exports = function(app) {
 
     /// SHOW INDEX ON LOAD
     app.get("/", function(req, res) {
-        res.render('index');
+        res.render('index', req);
     });
 
     /// GET ALL GAMES
@@ -90,7 +90,7 @@ module.exports = function(app) {
 
                     }).then(function(dbP2G) {
 
-                        res.redirect("/")
+                        res.redirect("/");
 
                     }).catch(function(error) {
                         res.send(error);
