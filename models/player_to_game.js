@@ -95,6 +95,10 @@ module.exports = function(sequelize, DataTypes) {
             type: DataTypes.BOOLEAN,
             allowNull: true
         },
+        teamname: {
+            type: DataTypes.BOOLEAN,
+            allowNull: true
+        }
     });
 
     PlayerToGame.associate = function(models) {
