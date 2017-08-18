@@ -5,6 +5,11 @@ module.exports = function(app) {
 
     // ---------------------------- GET ROUTES ---------------------------- //
 
+    /// SHOW INDEX ON LOAD
+    app.get("/", function(req, res) {
+        res.render('index', req);
+    });
+
     /// GET ALL GAMES
     app.get("/api/games", function(req, res) {
         db.Game.findAll({
@@ -30,8 +35,8 @@ module.exports = function(app) {
         }).then(function(dbPlayer) {
             //res.json(dbPlayer);
             res.render('playerstable', dbPlayer);
-            
-         });
+
+        });
     });
 
     /// GET ALL PLAYERTOGAME
@@ -83,10 +88,9 @@ module.exports = function(app) {
                         teamname: dbTeam.teamname,
                         admin: true
 
-
                     }).then(function(dbP2G) {
-                        res.json({ dbP2G, dbTeam, dbPlayer, dbGame });
-                        res.redirect("/game/" + dbGame.id + "/player/" + dbPlayer.id)
+
+                        res.redirect("/");
 
                     }).catch(function(error) {
                         res.send(error);
@@ -127,8 +131,8 @@ module.exports = function(app) {
                     admin: false
 
                 }).then(function(dbP2G) {
-                    res.json({ dbP2G, dbTeam, dbPlayer, dbGame });
-                    // res.redirect("/game/" + dbGame.id + "/player/" + dbPlayer.id)
+                    // res.json({ dbP2G, dbTeam, dbPlayer, dbGame });
+                    res.redirect("/");
 
                 }).catch(function(error) {
                     res.send(error);
