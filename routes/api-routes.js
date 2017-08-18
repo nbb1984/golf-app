@@ -42,7 +42,7 @@ module.exports = function(app) {
 
 
                     }).then(function(dbP2G) {
-                        res.json({ dbP2G, dbTeam, dbPlayer, dbGame });
+                        // res.json({ dbP2G, dbTeam, dbPlayer, dbGame });
                         res.redirect("/game/" + gameID + "/player/" + playerID)
 
                     }).catch(function(error) {
