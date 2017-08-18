@@ -8,10 +8,10 @@ module.exports = function(app) {
     // POST for a new game. Adds Admin
     app.post("/api/newGame", function(req, res) {
 
-      console.log("\n\n\n>>>>");
-      console.log(req.body);
-      console.log("\n\n\n>>>>");
-      
+        console.log("\n\n\n>>>>");
+        console.log(req.body);
+        console.log("\n\n\n>>>>");
+
         // findAll returns all entries for a table when used with no options
         db.Game.create({
             coursename: req.body.coursename,
@@ -35,14 +35,18 @@ module.exports = function(app) {
 
 
                 }).then(function(dbTeam) {
-                    db.Player_To_Game.create({
-                        gameId: dbGame.Id,
-                        PlayerId: dbPlayer.Id,
+                    db.PlayerToGame.create({
+                        // GameId: dbGame.Id,
+                        // PlayerId: dbPlayer.Id,
                         admin: true
 
 
                     }).then(function(dbP2G) {
-                        res.json({ dbP2G, dbTeam, dbPlayer, dbGame });
+                        res.json({ dbP2G, dbTeam, dbPlayer, dbGame })
+                            .then(function() {
+                                res.redirect("/game/" + gameID + "/player/" + playerID)
+                            });
+
                     }).catch(function(error) {
                         res.send(error);
                     });
