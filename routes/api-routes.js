@@ -119,7 +119,7 @@ module.exports = function(app) {
                 // ADD TO PLAYER TO
             }).then(function(dbTeam) {
                 db.PlayerToGame.create({
-                    // GameId: req.body.gameID,
+                    GameId: req.body.gameID,
                     PlayerId: dbPlayer.id,
                     teamname: dbTeam.teamname,
                     admin: false
