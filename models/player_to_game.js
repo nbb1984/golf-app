@@ -3,18 +3,6 @@ module.exports = function(sequelize, DataTypes) {
 
     var PlayerToGame = sequelize.define("PlayerToGame", {
 
-        // playerID: {
-        //   type: DataTypes.INTEGER,
-        //   allowNull: false
-        // },
-        // teamID: {
-        //   type: DataTypes.INTEGER
-        //   allowNull: false
-        // },
-        // gameID: {
-        //   type: DataTypes.INTEGER,
-        //   allowNull: false
-        //},
         Hole1: {
             type: DataTypes.INTEGER,
             allowNull: true

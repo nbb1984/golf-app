@@ -1,15 +1,9 @@
-// *****************************************************************************
-// Server.js - This file is the initial starting point for the Node/Express server.
-//
-// ******************************************************************************
-// *** Dependencies
-// =============================================================
+// Require node files
 var express = require("express");
 var bodyParser = require("body-parser");
 var sequelize = require('sequelize');
 
 // Sets up the Express App
-// =============================================================
 var app = express();
 var PORT = process.env.PORT || 8080;
 
@@ -23,9 +17,22 @@ app.use(bodyParser.text());
 app.use(bodyParser.json({ type: "application/vnd.api+json" }));
 
 // Static directory
-app.use(express.static("./public"));
+app.use(express.static(__dirname + "/public"));
+
+
+// Set Handlebars
+var exphbs = require("express-handlebars");
+
+app.engine("handlebars", exphbs({ defaultLayout: "main" }));
+app.set("view engine", "handlebars");
+
 
 // Routes =============================================================
+
+// Import routes and give the server access to them.
+// var routes = require("./controllers/golfController.js");
+
+// app.use("/", routes);
 
 require("./routes/html-routes.js")(app);
 require("./routes/api-routes.js")(app);
