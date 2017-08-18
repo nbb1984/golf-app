@@ -27,42 +27,35 @@ $(document).ready(function() {
         // Calling the newGame function and passing in the values in the game input
         newGame({
             /// GAME DB
-            CourseName: courseName
+            coursename: courseName
                 .val()
-                .trim()
-        }, {
-            Date: eventDate
+                .trim(),
+            date: eventDate
                 .val()
-                .trim()
-        }, {
-            Time: eventTime
-                .val()
-                .trim()
-        }, {
+                .trim(),
             /// PLAYER DB
-            name: nameInput
+            playername: nameInput
                 .val()
-                .trim()
-        }, {
+                .trim(),
             email: emailInput
                 .val()
-                .trim()
-        }, {
+                .trim(),
             password: passwordInput
                 .val()
-                .trim()
-        }, {
+                .trim(),
             /// TEAMDB
-            Team_Name: teamInput
+            teamname: teamInput
                 .val()
                 .trim()
         });
-    };
 
-    // A function for creating a game
-    function newGame(gameData) {
-        $.post("/api/newGame", gameData)
-        console.log("connected");
-    }
+
+        // A function for creating a game
+        function newGame(gameData) {
+            $.post("/api/newGame", gameData)
+            console.log("connected");
+        }
+
+    });
 
 });
