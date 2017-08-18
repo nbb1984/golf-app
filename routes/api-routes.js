@@ -3,6 +3,40 @@ var db = require("../models/index.js");
 
 module.exports = function(app) {
 
+    // ---------------------------- GET ROUTES ---------------------------- //
+
+    /// GET ALL GAMES
+    app.get("/api/games", function(req, res) {
+        db.Game.findAll({
+            // include: [db.Team]
+        }).then(function(dbGame) {
+            res.json(dbGame);
+        });
+    });
+
+    /// GET ALL TEAMS
+    app.get("/api/teams", function(req, res) {
+        db.Team.findAll({
+            // include: [db.Team]
+        }).then(function(dbTeam) {
+            res.json(dbTeam);
+        });
+    });
+
+    /// GET ALL PLAYERS
+    app.get("/api/players", function(req, res) {
+        db.Player.findAll({
+            // include: [db.Team]
+        }).then(function(dbPlayer) {
+            res.json(dbPlayer);
+        });
+    });
+
+
+
+    // ---------------------------- POST ROUTES ---------------------------- //
+
+
     /// CREATE NEW GAME FROM BUTTON ON INDEX
     app.post("/api/newGame", function(req, res) {
 
@@ -51,20 +85,9 @@ module.exports = function(app) {
     });
 
 
-    // res.json({dbGame, dbPlayer});
-    //       }).catch(function(error) {
-    //         res.send(error);
-
-    // joinGame GETS all the games from the game table, and PUTS the new player onto the player table
-    app.get("/api/joinGame", function(req, res) {
-        db.Game.findAll({
-            // include: [db.Team]
-        }).then(function(dbGame) {
-            res.json(dbGame);
-        });
 
 
-    });
+
     //maybe working   
     app.post("/api/joinGame", function(req, res) {
 
