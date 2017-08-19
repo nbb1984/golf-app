@@ -53,24 +53,21 @@ module.exports = function(app) {
 
     /// SEND TO GAME PAGE
     app.get("/game/:GameId/player/:PlayerId", function(req, res) {
-        db.Game.findOne({
-            where: {
-                id: req.params.gameID
-            },
-        }).then(function(dbGame) {
-            db.PlayerToGame.findAll({
-                    where: {
-                        GameId: req.params.GameId,
-                        PlayerId: req.params.PlayerId
-                    }
-                })
-                .then(function(data) {
-                    var hbsObject = { playertogame: data };
-                    res.render("index", hbsObject);
-                });
-        });
 
+        console.log(req.body);
+
+        db.PlayerToGame.findAll({
+                where: {
+                    GameId: req.params.GameId,
+                }
+            })
+            .then(function(data) {
+                var hbsObject = { playertogame: data };
+                console.log(hbsObject);
+                res.render("game", hbsObject);
+            });
     });
+
 
 
 
@@ -113,7 +110,7 @@ module.exports = function(app) {
                         admin: true
                     }).then(function(data) {
 
-                        res.redirect("/game/:" + data.GameId + "/player/:" + data.PlayerId);
+                        res.redirect("/game/" + data.GameId + "/player/" + data.PlayerId);
 
                     }).catch(function(error) {
                         res.send(error);
@@ -154,7 +151,7 @@ module.exports = function(app) {
 
                 }).then(function(dbP2G) {
 
-                    res.redirect("/game/:" + dbP2G.GameId + "/player/:" + dbP2G.PlayerId);
+                    res.redirect("/game/" + dbP2G.GameId + "/player/" + dbP2G.PlayerId);
 
                 }).catch(function(error) {
                     res.send(error);
@@ -205,7 +202,7 @@ module.exports = function(app) {
             }
         }).then(function(data) {
 
-            res.redirect('//game/:GameId/player/:PlayerId"');
+            res.redirect("/game/" + req.res.PlayerId + "/player/" + req.res.GameId);
 
         }).error(function(err) {
             console.log("Update failed");
