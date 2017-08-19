@@ -141,9 +141,9 @@ module.exports = function(app) {
 
             // ADD TO PLAYER TABLE
         }).then(function(dbPlayer) {
-            db.Team.create({
-                teamname: req.body.teamname
-
+            db.Team.findOrCreate({
+                where: { teamname: req.body.teamname }
+                
                 // ADD TO PLAYER TO
             }).then(function(dbTeam) {
                 db.PlayerToGame.create({
@@ -210,7 +210,7 @@ module.exports = function(app) {
         }).error(function(err) {
             console.log("Update failed");
         });
-        
+
     });
 
     // ---------------------------- INCOMPLETE ---------------------------- //
