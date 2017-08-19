@@ -7,6 +7,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
     <link rel="stylesheet" type="text/css" href="assets/css/style.css">
+    <link href="https://fonts.googleapis.com/css?family=Lato:400,700" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Oswald:400,500" rel="stylesheet">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     <script type="text/javascript" src="js/enterScore.js"></script>
@@ -29,224 +31,212 @@
                 <!-- start 1st row -->
                 <div class="row">
                     <div class="page-header">
-                        <h1>Course Name <small>event date</small></h1>
+                        <h1 class="course-header">Course Name <small>event date</small></h1>
                     </div>
                 </div>
                 <!-- end 1st row -->
                 <!-- start 2nd row -->
                 <div class="row">
-                    <div class="panel panel-default">
-                        <div class="panel-heading">
-                            <h3 class="panel-title">Event Leaderboard</h3>
-                        </div>
-                        <div class="panel-body">
-                            <table class="table table-condensed" id="groupTable">
-                                <thead>
-                                    <tr class="scoreRow">
-                                        <th></th>
-                                        <th>1</th>
-                                        <th>2</th>
-                                        <th>3</th>
-                                        <th>4</th>
-                                        <th>5</th>
-                                        <th>6</th>
-                                        <th>7</th>
-                                        <th>8</th>
-                                        <th>9</th>
-                                        <th>10</th>
-                                        <th>11</th>
-                                        <th>12</th>
-                                        <th>13</th>
-                                        <th>14</th>
-                                        <th>15</th>
-                                        <th>16</th>
-                                        <th>17</th>
-                                        <th>18</th>
-                                        <th>Total</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <tr class="scoreRow">
-                                        <th>Team 1</th>
-                                        <td>3</td>
-                                        <td>3</td>
-                                        <td>3</td>
-                                        <td>3</td>
-                                        <td>3</td>
-                                        <td>3</td>
-                                        <td>3</td>
-                                        <td>3</td>
-                                        <td>3</td>
-                                        <td>3</td>
-                                        <td>3</td>
-                                        <td>3</td>
-                                        <td>3</td>
-                                        <td>3</td>
-                                        <td>3</td>
-                                        <td>3</td>
-                                        <td>3</td>
-                                        <td>3</td>
-                                        <td class="rowsum"></td>
-                                    </tr>
-                                    <tr class="scoreRow">
-                                        <th>Team 2</th>
-                                        <td>3</td>
-                                        <td>3</td>
-                                        <td>3</td>
-                                        <td>3</td>
-                                        <td>3</td>
-                                        <td>3</td>
-                                        <td>3</td>
-                                        <td>3</td>
-                                        <td>3</td>
-                                        <td>3</td>
-                                        <td>3</td>
-                                        <td>3</td>
-                                        <td>3</td>
-                                        <td>3</td>
-                                        <td>3</td>
-                                        <td>3</td>
-                                        <td>3</td>
-                                        <td>3</td>
-                                        <td class="rowsum"></td>
-                                        <td><span class="glyphicon glyphicon-fire" aria-hidden="true"></span></td>
-                                    </tr>
-                                </tbody>
-                            </table>
-                        </div>
-                    </div>
+                    <h3 class="panel-title">Leaderboard</h3>
+                    <table class="table " id="groupTable">
+                        <thead>
+                            <tr class="scoreRow">
+                                <th></th>
+                                <th>1</th>
+                                <th>2</th>
+                                <th>3</th>
+                                <th>4</th>
+                                <th>5</th>
+                                <th>6</th>
+                                <th>7</th>
+                                <th>8</th>
+                                <th>9</th>
+                                <th>10</th>
+                                <th>11</th>
+                                <th>12</th>
+                                <th>13</th>
+                                <th>14</th>
+                                <th>15</th>
+                                <th>16</th>
+                                <th>17</th>
+                                <th>18</th>
+                                <th>Total</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr class="scoreRow">
+                                <th>Team 1</th>
+                                <td>3</td>
+                                <td>3</td>
+                                <td>3</td>
+                                <td>3</td>
+                                <td>3</td>
+                                <td>3</td>
+                                <td>3</td>
+                                <td>3</td>
+                                <td>3</td>
+                                <td>3</td>
+                                <td>3</td>
+                                <td>3</td>
+                                <td>3</td>
+                                <td>3</td>
+                                <td>3</td>
+                                <td>3</td>
+                                <td>3</td>
+                                <td>3</td>
+                                <td class="rowsum"></td>
+                            </tr>
+                            <tr class="scoreRow">
+                                <th>Team 2</th>
+                                <td>3</td>
+                                <td>3</td>
+                                <td>3</td>
+                                <td>3</td>
+                                <td>3</td>
+                                <td>3</td>
+                                <td>3</td>
+                                <td>3</td>
+                                <td>3</td>
+                                <td>3</td>
+                                <td>3</td>
+                                <td>3</td>
+                                <td>3</td>
+                                <td>3</td>
+                                <td>3</td>
+                                <td>3</td>
+                                <td>3</td>
+                                <td>3</td>
+                                <td class="rowsum"></td>
+                                <td><span class="glyphicon glyphicon-fire" aria-hidden="true"></span></td>
+                            </tr>
+                        </tbody>
+                    </table>
                 </div>
                 <!-- end 2nd row -->
                 <!-- start 3nd row -->
                 <div class="row">
-                    <div class="panel panel-default">
-                        <div class="panel-heading">
-                            <h3 class="panel-title">Team Scoreboard</h3>
-                        </div>
-                        <div class="panel-body">
-                            <table class="table table-condensed" id="playerTable">
-                                <thead>
-                                    <tr class="scoreRow">
-                                        <th></th>
-                                        <th></th>
-                                        <th>1</th>
-                                        <th>2</th>
-                                        <th>3</th>
-                                        <th>4</th>
-                                        <th>5</th>
-                                        <th>6</th>
-                                        <th>7</th>
-                                        <th>8</th>
-                                        <th>9</th>
-                                        <th>10</th>
-                                        <th>11</th>
-                                        <th>12</th>
-                                        <th>13</th>
-                                        <th>14</th>
-                                        <th>15</th>
-                                        <th>16</th>
-                                        <th>17</th>
-                                        <th>18</th>
-                                        <th>Total</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <tr class="scoreRow">
-                                        <th rowspan="2">Team 1</th>
-                                        <th>Player 1</th>
-                                        <td>3</td>
-                                        <td>3</td>
-                                        <td>3</td>
-                                        <td>3</td>
-                                        <td>3</td>
-                                        <td>3</td>
-                                        <td>3</td>
-                                        <td>3</td>
-                                        <td>3</td>
-                                        <td>3</td>
-                                        <td>3</td>
-                                        <td>3</td>
-                                        <td>3</td>
-                                        <td>3</td>
-                                        <td>3</td>
-                                        <td>3</td>
-                                        <td>3</td>
-                                        <td>3</td>
-                                        <td class="rowsum"></td>
-                                    </tr>
-                                    <tr class="scoreRow">
-                                        <th>Player 2</th>
-                                        <td>3</td>
-                                        <td>3</td>
-                                        <td>3</td>
-                                        <td>3</td>
-                                        <td>3</td>
-                                        <td>3</td>
-                                        <td>3</td>
-                                        <td>3</td>
-                                        <td>3</td>
-                                        <td>3</td>
-                                        <td>3</td>
-                                        <td>3</td>
-                                        <td>3</td>
-                                        <td>3</td>
-                                        <td>3</td>
-                                        <td>3</td>
-                                        <td>3</td>
-                                        <td>3</td>
-                                        <td class="rowsum"></td>
-                                        <td><span class="glyphicon glyphicon-fire" aria-hidden="true"></span></td>
-                                    </tr>
-                                    <tr class="scoreRow">
-                                        <th rowspan="2">Team 2</th>
-                                        <th>Player 1</th>
-                                        <td>3</td>
-                                        <td>3</td>
-                                        <td>3</td>
-                                        <td>3</td>
-                                        <td>3</td>
-                                        <td>3</td>
-                                        <td>3</td>
-                                        <td>3</td>
-                                        <td>3</td>
-                                        <td>3</td>
-                                        <td>3</td>
-                                        <td>3</td>
-                                        <td>3</td>
-                                        <td>3</td>
-                                        <td>3</td>
-                                        <td>3</td>
-                                        <td>3</td>
-                                        <td>3</td>
-                                        <td class="rowsum"></td>
-                                        <td><span class="glyphicon glyphicon-fire" aria-hidden="true"></span></td>
-                                    </tr>
-                                    <tr class="scoreRow">
-                                        <th>Player 2</th>
-                                        <td>3</td>
-                                        <td>3</td>
-                                        <td>3</td>
-                                        <td>3</td>
-                                        <td>3</td>
-                                        <td>3</td>
-                                        <td>3</td>
-                                        <td>3</td>
-                                        <td>3</td>
-                                        <td>3</td>
-                                        <td>3</td>
-                                        <td>3</td>
-                                        <td>3</td>
-                                        <td>3</td>
-                                        <td>3</td>
-                                        <td>3</td>
-                                        <td>3</td>
-                                        <td>3</td>
-                                        <td class="rowsum"></td>
-                                    </tr>
-                                </tbody>
-                            </table>
-                        </div>
-                    </div>
+                    <h3 class="panel-title">Scoreboard</h3>
+                    <table class="table" id="playerTable">
+                        <thead>
+                            <tr class="scoreRow">
+                                <th></th>
+                                <th></th>
+                                <th>1</th>
+                                <th>2</th>
+                                <th>3</th>
+                                <th>4</th>
+                                <th>5</th>
+                                <th>6</th>
+                                <th>7</th>
+                                <th>8</th>
+                                <th>9</th>
+                                <th>10</th>
+                                <th>11</th>
+                                <th>12</th>
+                                <th>13</th>
+                                <th>14</th>
+                                <th>15</th>
+                                <th>16</th>
+                                <th>17</th>
+                                <th>18</th>
+                                <th>Total</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr class="scoreRow">
+                                <th rowspan="2">Team 1</th>
+                                <th>Player 1</th>
+                                <td>3</td>
+                                <td>3</td>
+                                <td>3</td>
+                                <td>3</td>
+                                <td>3</td>
+                                <td>3</td>
+                                <td>3</td>
+                                <td>3</td>
+                                <td>3</td>
+                                <td>3</td>
+                                <td>3</td>
+                                <td>3</td>
+                                <td>3</td>
+                                <td>3</td>
+                                <td>3</td>
+                                <td>3</td>
+                                <td>3</td>
+                                <td>3</td>
+                                <td class="rowsum"></td>
+                            </tr>
+                            <tr class="scoreRow">
+                                <th>Player 2</th>
+                                <td>3</td>
+                                <td>3</td>
+                                <td>3</td>
+                                <td>3</td>
+                                <td>3</td>
+                                <td>3</td>
+                                <td>3</td>
+                                <td>3</td>
+                                <td>3</td>
+                                <td>3</td>
+                                <td>3</td>
+                                <td>3</td>
+                                <td>3</td>
+                                <td>3</td>
+                                <td>3</td>
+                                <td>3</td>
+                                <td>3</td>
+                                <td>3</td>
+                                <td class="rowsum"></td>
+                                <td><span class="glyphicon glyphicon-fire" aria-hidden="true"></span></td>
+                            </tr>
+                            <tr class="scoreRow">
+                                <th rowspan="2">Team 2</th>
+                                <th>Player 1</th>
+                                <td>3</td>
+                                <td>3</td>
+                                <td>3</td>
+                                <td>3</td>
+                                <td>3</td>
+                                <td>3</td>
+                                <td>3</td>
+                                <td>3</td>
+                                <td>3</td>
+                                <td>3</td>
+                                <td>3</td>
+                                <td>3</td>
+                                <td>3</td>
+                                <td>3</td>
+                                <td>3</td>
+                                <td>3</td>
+                                <td>3</td>
+                                <td>3</td>
+                                <td class="rowsum"></td>
+                                <td><span class="glyphicon glyphicon-fire" aria-hidden="true"></span></td>
+                            </tr>
+                            <tr class="scoreRow">
+                                <th>Player 2</th>
+                                <td>3</td>
+                                <td>3</td>
+                                <td>3</td>
+                                <td>3</td>
+                                <td>3</td>
+                                <td>3</td>
+                                <td>3</td>
+                                <td>3</td>
+                                <td>3</td>
+                                <td>3</td>
+                                <td>3</td>
+                                <td>3</td>
+                                <td>3</td>
+                                <td>3</td>
+                                <td>3</td>
+                                <td>3</td>
+                                <td>3</td>
+                                <td>3</td>
+                                <td class="rowsum"></td>
+                            </tr>
+                        </tbody>
+                    </table>
                 </div>
                 <!-- end 3nd row -->
             </div>
@@ -260,181 +250,181 @@
                 <!-- start 1st row -->
                 <div class="row">
                     <div class="page-header">
-                        <h1>Course Name <small>event date</small></h1>
+                        <h1 class="course-header">Course Name <small>event date</small></h1>
                     </div>
                 </div>
                 <!-- end 1st row -->
                 <!-- start 2nd row -->
                 <div class="row">
-                <div class="col-md-6 col-s-12 col-xs-12">
-                    <div class="panel panel-default score-entry-panel">
-                        <div class="panel-body">
-                            <form method="post" action="">
-                                <div class="form-group">
-                                    <label for="name">Hole 1</label>
-                                    <button type="button" class="btn dec-btn score-btn btn-sm">-</button>
-                                    <input type="number" class="stroke-input" id="Hole1" value="0">
-                                    <button type="button" class="btn inc-btn score-btn btn-sm">+</button>
-                                    <button type="button" class="btn submit-scores-btn btn-sm">
-                                        <span class="glyphicon glyphicon-ok" aria-hidden="true"></span>
-                                    </button>
-                                </div>
-                                <div class="form-group">
-                                    <label for="name">Hole 2</label>
-                                    <button type="button" class="btn dec-btn score-btn btn-sm">-</button>
-                                    <input type="number" class="stroke-input" id="Hole2" value="0">
-                                    <button type="button" class="btn inc-btn score-btn btn-sm">+</button>
-                                    <button type="button" class="btn submit-scores-btn btn-sm">
-                                        <span class="glyphicon glyphicon-ok" aria-hidden="true"></span>
-                                    </button>
-                                </div>
-                                <div class="form-group">
-                                    <label for="name">Hole 3</label>
-                                    <button type="button" class="btn dec-btn score-btn btn-sm btn-sm">-</button>
-                                    <input type="number" class="stroke-input" id="Hole3" value="0">
-                                    <button type="button" class="btn inc-btn score-btn btn-sm btn-sm">+</button>
-                                    <button type="button" class="btn submit-scores-btn btn-sm btn-sm">
-                                        <span class="glyphicon glyphicon-ok" aria-hidden="true"></span>
-                                    </button>
-                                </div>
-                                <div class="form-group">
-                                    <label for="name">Hole 4</label>
-                                    <button type="button" class="btn dec-btn score-btn btn-sm">-</button>
-                                    <input type="number" class="stroke-input" id="Hole4" value="0">
-                                    <button type="button" class="btn inc-btn score-btn btn-sm">+</button>
-                                    <button type="button" class="btn submit-scores-btn btn-sm">
-                                        <span class="glyphicon glyphicon-ok" aria-hidden="true"></span>
-                                    </button>
-                                </div>
-                                <div class="form-group">
-                                    <label for="name">Hole 5</label>
-                                    <button type="button" class="btn dec-btn score-btn btn-sm">-</button>
-                                    <input type="number" class="stroke-input" id="Hole5" value="0">
-                                    <button type="button" class="btn inc-btn score-btn btn-sm">+</button>
-                                    <button type="button" class="btn submit-scores-btn btn-sm">
-                                        <span class="glyphicon glyphicon-ok" aria-hidden="true"></span>
-                                    </button>
-                                </div>
-                                <div class="form-group">
-                                    <label for="name">Hole 6</label>
-                                    <button type="button" class="btn dec-btn score-btn btn-sm">-</button>
-                                    <input type="number" class="stroke-input" id="Hole6" value="0">
-                                    <button type="button" class="btn inc-btn score-btn btn-sm">+</button>
-                                    <button type="button" class="btn submit-scores-btn btn-sm">
-                                        <span class="glyphicon glyphicon-ok" aria-hidden="true"></span>
-                                    </button>
-                                </div>
-                                <div class="form-group">
-                                    <label for="name">Hole 7</label>
-                                    <button type="button" class="btn dec-btn score-btn btn-sm">-</button>
-                                    <input type="number" class="stroke-input" id="Hole7" value="0">
-                                    <button type="button" class="btn inc-btn score-btn btn-sm">+</button>
-                                    <button type="button" class="btn submit-scores-btn btn-sm">
-                                        <span class="glyphicon glyphicon-ok" aria-hidden="true"></span>
-                                    </button>
-                                </div>
-                                <div class="form-group">
-                                    <label for="name">Hole 8</label>
-                                    <button type="button" class="btn dec-btn score-btn btn-sm">-</button>
-                                    <input type="number" class="stroke-input" id="Hole8" value="0">
-                                    <button type="button" class="btn inc-btn score-btn btn-sm">+</button>
-                                    <button type="button" class="btn submit-scores-btn btn-sm">
-                                        <span class="glyphicon glyphicon-ok" aria-hidden="true"></span>
-                                    </button>
-                                </div>
-                                <div class="form-group">
-                                    <label for="name">Hole 9</label>
-                                    <button type="button" class="btn dec-btn score-btn btn-sm">-</button>
-                                    <input type="number" class="stroke-input" id="Hole9" value="0">
-                                    <button type="button" class="btn inc-btn score-btn btn-sm">+</button>
-                                    <button type="button" class="btn submit-scores-btn btn-sm">
-                                        <span class="glyphicon glyphicon-ok" aria-hidden="true"></span>
-                                    </button>
-                                </div>
-                                <div class="form-group">
-                                    <label for="name">Hole 10</label>
-                                    <button type="button" class="btn dec-btn score-btn btn-sm">-</button>
-                                    <input type="number" class="stroke-input" id="Hole10" value="0">
-                                    <button type="button" class="btn inc-btn score-btn btn-sm">+</button>
-                                    <button type="button" class="btn submit-scores-btn btn-sm">
-                                        <span class="glyphicon glyphicon-ok" aria-hidden="true"></span>
-                                    </button>
-                                </div>
-                                <div class="form-group">
-                                    <label for="name">Hole 11</label>
-                                    <button type="button" class="btn dec-btn score-btn btn-sm">-</button>
-                                    <input type="number" class="stroke-input" id="Hole11" value="0">
-                                    <button type="button" class="btn inc-btn score-btn btn-sm">+</button>
-                                    <button type="button" class="btn submit-scores-btn btn-sm">
-                                        <span class="glyphicon glyphicon-ok" aria-hidden="true"></span>
-                                    </button>
-                                </div>
-                                <div class="form-group">
-                                    <label for="name">Hole 12</label>
-                                    <button type="button" class="btn dec-btn score-btn btn-sm">-</button>
-                                    <input type="number" class="stroke-input" id="Hole12" value="0">
-                                    <button type="button" class="btn inc-btn score-btn btn-sm">+</button>
-                                    <button type="button" class="btn submit-scores-btn btn-sm">
-                                        <span class="glyphicon glyphicon-ok" aria-hidden="true"></span>
-                                    </button>
-                                </div>
-                                <div class="form-group">
-                                    <label for="name">Hole 13</label>
-                                    <button type="button" class="btn dec-btn score-btn btn-sm">-</button>
-                                    <input type="number" class="stroke-input" id="Hole13" value="0">
-                                    <button type="button" class="btn inc-btn score-btn btn-sm">+</button>
-                                    <button type="button" class="btn submit-scores-btn btn-sm">
-                                        <span class="glyphicon glyphicon-ok" aria-hidden="true"></span>
-                                    </button>
-                                </div>
-                                <div class="form-group">
-                                    <label for="name">Hole 14</label>
-                                    <button type="button" class="btn dec-btn score-btn btn-sm">-</button>
-                                    <input type="number" class="stroke-input" id="Hole14" value="0">
-                                    <button type="button" class="btn inc-btn score-btn btn-sm">+</button>
-                                    <button type="button" class="btn submit-scores-btn btn-sm">
-                                        <span class="glyphicon glyphicon-ok" aria-hidden="true"></span>
-                                    </button>
-                                </div>
-                                <div class="form-group">
-                                    <label for="name">Hole 15</label>
-                                    <button type="button" class="btn dec-btn score-btn btn-sm">-</button>
-                                    <input type="number" class="stroke-input" id="Hole15" value="0">
-                                    <button type="button" class="btn inc-btn score-btn btn-sm">+</button>
-                                    <button type="button" class="btn submit-scores-btn btn-sm">
-                                        <span class="glyphicon glyphicon-ok" aria-hidden="true"></span>
-                                    </button>
-                                </div>
-                                <div class="form-group">
-                                    <label for="name">Hole 16</label>
-                                    <button type="button" class="btn dec-btn score-btn btn-sm">-</button>
-                                    <input type="number" class="stroke-input" id="Hole16" value="0">
-                                    <button type="button" class="btn inc-btn score-btn btn-sm">+</button>
-                                    <button type="button" class="btn submit-scores-btn btn-sm">
-                                        <span class="glyphicon glyphicon-ok" aria-hidden="true"></span>
-                                    </button>
-                                </div>
-                                <div class="form-group">
-                                    <label for="name">Hole 17</label>
-                                    <button type="button" class="btn dec-btn score-btn btn-sm">-</button>
-                                    <input type="number" class="stroke-input" id="Hole17" value="0">
-                                    <button type="button" class="btn inc-btn score-btn btn-sm">+</button>
-                                    <button type="button" class="btn submit-scores-btn btn-sm">
-                                        <span class="glyphicon glyphicon-ok" aria-hidden="true"></span>
-                                    </button>
-                                </div>
-                                <div class="form-group">
-                                    <label for="name">Hole 18</label>
-                                    <button type="button" class="btn dec-btn score-btn btn-sm">-</button>
-                                    <input type="number" class="stroke-input" id="Hole18" value="0">
-                                    <button type="button" class="btn inc-btn score-btn btn-sm">+</button>
-                                    <button type="button" class="btn submit-scores-btn btn-sm">
-                                        <span class="glyphicon glyphicon-ok" aria-hidden="true"></span>
-                                    </button>
-                                </div>
-                            </form>
+                    <div class="col-md-6 col-s-12 col-xs-12">
+                        <div class="panel panel-default score-entry-panel score-panels">
+                            <div class="panel-body">
+                                <form method="post" action="">
+                                    <div class="form-group">
+                                        <label for="name">Hole 1</label>
+                                        <button type="button" class="btn dec-btn score-btn btn-sm">-</button>
+                                        <input type="number" class="stroke-input" id="Hole1" value="0">
+                                        <button type="button" class="btn inc-btn score-btn btn-sm">+</button>
+                                        <button type="button" class="btn submit-scores-btn btn-sm">
+                                            <span class="glyphicon glyphicon-ok" aria-hidden="true"></span>
+                                        </button>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="name">Hole 2</label>
+                                        <button type="button" class="btn dec-btn score-btn btn-sm">-</button>
+                                        <input type="number" class="stroke-input" id="Hole2" value="0">
+                                        <button type="button" class="btn inc-btn score-btn btn-sm">+</button>
+                                        <button type="button" class="btn submit-scores-btn btn-sm">
+                                            <span class="glyphicon glyphicon-ok" aria-hidden="true"></span>
+                                        </button>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="name">Hole 3</label>
+                                        <button type="button" class="btn dec-btn score-btn btn-sm btn-sm">-</button>
+                                        <input type="number" class="stroke-input" id="Hole3" value="0">
+                                        <button type="button" class="btn inc-btn score-btn btn-sm btn-sm">+</button>
+                                        <button type="button" class="btn submit-scores-btn btn-sm btn-sm">
+                                            <span class="glyphicon glyphicon-ok" aria-hidden="true"></span>
+                                        </button>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="name">Hole 4</label>
+                                        <button type="button" class="btn dec-btn score-btn btn-sm">-</button>
+                                        <input type="number" class="stroke-input" id="Hole4" value="0">
+                                        <button type="button" class="btn inc-btn score-btn btn-sm">+</button>
+                                        <button type="button" class="btn submit-scores-btn btn-sm">
+                                            <span class="glyphicon glyphicon-ok" aria-hidden="true"></span>
+                                        </button>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="name">Hole 5</label>
+                                        <button type="button" class="btn dec-btn score-btn btn-sm">-</button>
+                                        <input type="number" class="stroke-input" id="Hole5" value="0">
+                                        <button type="button" class="btn inc-btn score-btn btn-sm">+</button>
+                                        <button type="button" class="btn submit-scores-btn btn-sm">
+                                            <span class="glyphicon glyphicon-ok" aria-hidden="true"></span>
+                                        </button>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="name">Hole 6</label>
+                                        <button type="button" class="btn dec-btn score-btn btn-sm">-</button>
+                                        <input type="number" class="stroke-input" id="Hole6" value="0">
+                                        <button type="button" class="btn inc-btn score-btn btn-sm">+</button>
+                                        <button type="button" class="btn submit-scores-btn btn-sm">
+                                            <span class="glyphicon glyphicon-ok" aria-hidden="true"></span>
+                                        </button>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="name">Hole 7</label>
+                                        <button type="button" class="btn dec-btn score-btn btn-sm">-</button>
+                                        <input type="number" class="stroke-input" id="Hole7" value="0">
+                                        <button type="button" class="btn inc-btn score-btn btn-sm">+</button>
+                                        <button type="button" class="btn submit-scores-btn btn-sm">
+                                            <span class="glyphicon glyphicon-ok" aria-hidden="true"></span>
+                                        </button>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="name">Hole 8</label>
+                                        <button type="button" class="btn dec-btn score-btn btn-sm">-</button>
+                                        <input type="number" class="stroke-input" id="Hole8" value="0">
+                                        <button type="button" class="btn inc-btn score-btn btn-sm">+</button>
+                                        <button type="button" class="btn submit-scores-btn btn-sm">
+                                            <span class="glyphicon glyphicon-ok" aria-hidden="true"></span>
+                                        </button>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="name">Hole 9</label>
+                                        <button type="button" class="btn dec-btn score-btn btn-sm">-</button>
+                                        <input type="number" class="stroke-input" id="Hole9" value="0">
+                                        <button type="button" class="btn inc-btn score-btn btn-sm">+</button>
+                                        <button type="button" class="btn submit-scores-btn btn-sm">
+                                            <span class="glyphicon glyphicon-ok" aria-hidden="true"></span>
+                                        </button>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="name">Hole 10</label>
+                                        <button type="button" class="btn dec-btn score-btn btn-sm">-</button>
+                                        <input type="number" class="stroke-input" id="Hole10" value="0">
+                                        <button type="button" class="btn inc-btn score-btn btn-sm">+</button>
+                                        <button type="button" class="btn submit-scores-btn btn-sm">
+                                            <span class="glyphicon glyphicon-ok" aria-hidden="true"></span>
+                                        </button>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="name">Hole 11</label>
+                                        <button type="button" class="btn dec-btn score-btn btn-sm">-</button>
+                                        <input type="number" class="stroke-input" id="Hole11" value="0">
+                                        <button type="button" class="btn inc-btn score-btn btn-sm">+</button>
+                                        <button type="button" class="btn submit-scores-btn btn-sm">
+                                            <span class="glyphicon glyphicon-ok" aria-hidden="true"></span>
+                                        </button>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="name">Hole 12</label>
+                                        <button type="button" class="btn dec-btn score-btn btn-sm">-</button>
+                                        <input type="number" class="stroke-input" id="Hole12" value="0">
+                                        <button type="button" class="btn inc-btn score-btn btn-sm">+</button>
+                                        <button type="button" class="btn submit-scores-btn btn-sm">
+                                            <span class="glyphicon glyphicon-ok" aria-hidden="true"></span>
+                                        </button>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="name">Hole 13</label>
+                                        <button type="button" class="btn dec-btn score-btn btn-sm">-</button>
+                                        <input type="number" class="stroke-input" id="Hole13" value="0">
+                                        <button type="button" class="btn inc-btn score-btn btn-sm">+</button>
+                                        <button type="button" class="btn submit-scores-btn btn-sm">
+                                            <span class="glyphicon glyphicon-ok" aria-hidden="true"></span>
+                                        </button>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="name">Hole 14</label>
+                                        <button type="button" class="btn dec-btn score-btn btn-sm">-</button>
+                                        <input type="number" class="stroke-input" id="Hole14" value="0">
+                                        <button type="button" class="btn inc-btn score-btn btn-sm">+</button>
+                                        <button type="button" class="btn submit-scores-btn btn-sm">
+                                            <span class="glyphicon glyphicon-ok" aria-hidden="true"></span>
+                                        </button>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="name">Hole 15</label>
+                                        <button type="button" class="btn dec-btn score-btn btn-sm">-</button>
+                                        <input type="number" class="stroke-input" id="Hole15" value="0">
+                                        <button type="button" class="btn inc-btn score-btn btn-sm">+</button>
+                                        <button type="button" class="btn submit-scores-btn btn-sm">
+                                            <span class="glyphicon glyphicon-ok" aria-hidden="true"></span>
+                                        </button>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="name">Hole 16</label>
+                                        <button type="button" class="btn dec-btn score-btn btn-sm">-</button>
+                                        <input type="number" class="stroke-input" id="Hole16" value="0">
+                                        <button type="button" class="btn inc-btn score-btn btn-sm">+</button>
+                                        <button type="button" class="btn submit-scores-btn btn-sm">
+                                            <span class="glyphicon glyphicon-ok" aria-hidden="true"></span>
+                                        </button>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="name">Hole 17</label>
+                                        <button type="button" class="btn dec-btn score-btn btn-sm">-</button>
+                                        <input type="number" class="stroke-input" id="Hole17" value="0">
+                                        <button type="button" class="btn inc-btn score-btn btn-sm">+</button>
+                                        <button type="button" class="btn submit-scores-btn btn-sm">
+                                            <span class="glyphicon glyphicon-ok" aria-hidden="true"></span>
+                                        </button>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="name">Hole 18</label>
+                                        <button type="button" class="btn dec-btn score-btn btn-sm">-</button>
+                                        <input type="number" class="stroke-input" id="Hole18" value="0">
+                                        <button type="button" class="btn inc-btn score-btn btn-sm">+</button>
+                                        <button type="button" class="btn submit-scores-btn btn-sm">
+                                            <span class="glyphicon glyphicon-ok" aria-hidden="true"></span>
+                                        </button>
+                                    </div>
+                                </form>
+                            </div>
                         </div>
-                    </div>
                     </div>
                 </div>
                 <!-- end 2nd row -->
