@@ -65,7 +65,7 @@ module.exports = function(app) {
                     }
                 })
                 .then(function(data) {
-                    var hbsObject = { PlayerToGame: data };
+                    var hbsObject = { playertogame: data };
                     res.render("index", hbsObject);
                 });
         });
@@ -141,8 +141,8 @@ module.exports = function(app) {
 
             // ADD TO PLAYER TABLE
         }).then(function(dbPlayer) {
-            db.Team.create({
-                teamname: req.body.teamname
+            db.Team.findOrCreate({
+                where: { teamname: req.body.teamname }
 
                 // ADD TO PLAYER TO
             }).then(function(dbTeam) {
@@ -210,7 +210,7 @@ module.exports = function(app) {
         }).error(function(err) {
             console.log("Update failed");
         });
-        
+
     });
 
     // ---------------------------- INCOMPLETE ---------------------------- //
