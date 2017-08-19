@@ -214,6 +214,34 @@ module.exports = function(app) {
 
     // // GETS users for handling log-in info. // may have to be restructured.
     // app.get("/api/login", function(req, res) {
+    
+        //==========validator commented out
+    
+//    var validation = propVal.validateParams(req, [
+//         propVal.presence('gameID')
+//       ]);
+
+//       if (validation.valid) {
+//         console.log("valid!");
+//         res.status(200).json({ name: req.query.gameID });
+//       } else {
+//         console.log("not valid!");
+//         res.status(422).json({ errors: validation.errors });
+//       }
+
+//    validation = propVal.validateParams(req, [
+//         propVal.presence('playerID')
+//       ]);
+
+//       if (validation.valid) {
+//         console.log("valid!");
+//         res.status(200).json({ name: req.query.gameID });
+//       } else {
+//         console.log("not valid!");
+//         res.status(422).json({ errors: validation.errors });
+//       }
+    
+    //===========end validator
 
     //     db.Player.findOne({
     //         where: {
@@ -263,6 +291,35 @@ module.exports = function(app) {
 
     // //
     // app.get("/find/game/:gameID/player/:playerID", function(req, res) {
+    
+    //==========validator commented out
+    
+//    var validation = propVal.validateParams(req, [
+//         propVal.presence('gameID')
+//       ]);
+
+//       if (validation.valid) {
+//         console.log("valid!");
+//         res.status(200).json({ name: req.query.gameID });
+//       } else {
+//         console.log("not valid!");
+//         res.status(422).json({ errors: validation.errors });
+//       }
+
+//    validation = propVal.validateParams(req, [
+//         propVal.presence('playerID')
+//       ]);
+
+//       if (validation.valid) {
+//         console.log("valid!");
+//         res.status(200).json({ name: req.query.gameID });
+//       } else {
+//         console.log("not valid!");
+//         res.status(422).json({ errors: validation.errors });
+//       }
+    
+    //===========end validator
+    
     //     db.Player_To_Game.findAll({
     //         include: db.Player,
     //         include: db.Team,
