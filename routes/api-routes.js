@@ -202,7 +202,7 @@ module.exports = function(app) {
             }
         }).then(function(data) {
 
-            res.redirect("/game/" + req.res.PlayerId + "/player/" + req.res.GameId));
+            res.redirect("/game/" + req.res.PlayerId + "/player/" + req.res.GameId);
 
         }).error(function(err) {
             console.log("Update failed");
