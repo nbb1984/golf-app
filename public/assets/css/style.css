@@ -1,50 +1,121 @@
-.glyphicon-ok {
-	font-size: 11px;
+* {
+    box-sizing: border-box;
+    margin: 0 auto;
 }
 
-.stroke-input {
-	width: 15%;
+body {
+    font-family: 'Lato', sans-serif;
+	background-image: url("../images/grass.jpg");
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-position: 75% 85%;
+}
+
+h1 {
+    font-family: 'Oswald', sans-serif;
+    font-size: 3.7em;
+    margin-bottom: 30px;
+    text-align: center;
+    padding: 0.75em;
+    margin-top: -3px;
+}
+
+table {
+    background-color: rgba(249, 252, 244, 0.9);
+}
+
+.glyphicon-ok {
+    font-size: 11px;
+}
+
+
+.panel-title {
+    padding: 0.5em;
+    background: none;
+    background-color: rgba(249, 252, 244, 0.9);
+    font-family: 'Oswald', sans-serif;
+    font-size: 1.4em;
+}
+
+.score-panels {
+    border: none;
+    background: none;
+    background-color: rgba(249, 252, 244, 0.8);
 }
 
 .score-entry-panel {
-	border: none;
+    width: 75%;
 }
 
-.main-page {
-	background-image: url("../images/grass.jpg"); 
-	background-repeat: no-repeat;
-    background-attachment: fixed;
-	background-position: 75% 100%;
+.stroke-input {
+    width: 15%;
 }
 
-.jumbotron {
-  border-radius: 0;
-  opacity: 0.9;
+.score-btn {
+    background: none;
+    border: 1px solid #cbcec8;
 }
 
+.submit-scores-btn {
+    background: none;
+    border: 1px solid #cbcec8;
+}
+
+.nav-tabs>li.active>a,
+.nav-tabs>li.active>a:focus,
+.nav-tabs>li.active>a:hover {
+    background-color: #fbfcea;
+}
+
+.btn-block {
+    height: 3em;
+    margin-bottom: 2em;
+    border: none;
+    border-radius: 0;
+    background: none;
+    background-color: #f9fcf4;
+}
 
 
 /* Media Queries */
 
 @media screen and (max-width: 768px) {
 
-	.container {
-	  width: 100%;
-	  max-width: 768px;
-	  margin: 0 auto;
-	}
+    body {
+        background-position: 75% 85%;
+    }
 
-  	.main-page {
-		background-position: 75% 100%;
-	}
+    .container {
+        width: 100%;
+        max-width: 768px;
+        margin: 0 auto;
+    }
 
+    .score-entry-panel {
+        width: 75%;
+    }
 }
 
 @media screen and (max-width: 667px) {
 
-	.main-page {
-		background-position: 75% 100%;
-	}
+    body {
+        background-position: 75% 85%;
+    }
 
+    .score-entry-panel {
+        width: 100%;
+    }
+
+    .course-header {
+        font-size: 3em;
+        padding: 0em;
+        margin-bottom: 10px;
+    }
+
+    #button-create,
+    #button-join,
+    #button-login {
+        width: 75%;
+        margin-left: 13%;
+    }
 }
-
