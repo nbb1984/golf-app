@@ -65,7 +65,7 @@ module.exports = function(app) {
                     }
                 })
                 .then(function(data) {
-                    var hbsObject = { PlayerToGame: data };
+                    var hbsObject = { playertogame: data };
                     res.render("index", hbsObject);
                 });
         });
@@ -143,7 +143,7 @@ module.exports = function(app) {
         }).then(function(dbPlayer) {
             db.Team.findOrCreate({
                 where: { teamname: req.body.teamname }
-                
+
                 // ADD TO PLAYER TO
             }).then(function(dbTeam) {
                 db.PlayerToGame.create({
