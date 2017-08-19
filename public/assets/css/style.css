@@ -24,6 +24,32 @@ table {
     background-color: rgba(249, 252, 244, 0.9);
 }
 
+.modal-body {
+	padding: 0;
+	border-radius: 0;
+}
+
+.modal-content {
+	border-radius: 0;
+}
+
+.panel-heading {
+	padding: 0;
+    border-radius: 0;
+}
+
+.modal-input-group {
+	margin-bottom: 10px;
+}
+
+.input-group-addon {
+    background: none;
+    background-color: #f9fcf4;
+    border: 1px solid #cbcec8;
+    border-radius: 0;
+}
+
+
 .glyphicon-ok {
     font-size: 11px;
 }
@@ -74,6 +100,13 @@ table {
     border-radius: 0;
     background: none;
     background-color: #f9fcf4;
+}
+
+.btn-modal {
+	border: none;
+	border-radius: 0;
+	background: none;
+	background-color: #f9fcf4;
 }
 
 
