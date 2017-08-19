@@ -1,0 +1,369 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>GOlf test</title>
+    <!-- JQUERY -->
+    <script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+    <script type="text/javascript" href="/score.js"></script>
+</head>
+
+<body>
+    <script type="text/javascript">
+    $(document).ready(function() {
+
+        // Variables to run newSum
+        var row = 0,
+            col = 0,
+            ncol = 0;
+        var sum;
+
+
+
+        // Find the lowest score from each team and input into the group scorecard
+
+        var findWinner = function() {
+
+            // For each playerTable
+            $("table[id*='playerTable']").each(function(i, a) {
+                console.log(a);
+
+                // For each hole
+                $(a).find("tr:first-child>td:not('.rowsum')").each(function(j) {
+                    var j = j;
+                    var bestHoleScore = 100;
+                    // For each row (player) in the playerTable
+                    $(a).find(".scoreRow").each(function(k, c) {
+                        if (Number($(c).find("td:eq(" + j + ")>input")[0].value) > 0) {
+                            bestHoleScore = (Number($(c).find("td:eq(" + j + ")>input")[0].value) < bestHoleScore) ? $(c).find("td:eq(" + j + ")>input")[0].value : bestHoleScore;
+                        }
+                    });
+                    bestHoleScore = (bestHoleScore == 100) ? 0 : bestHoleScore;
+                    $("#groupTable>tbody>tr:eq(" + i + ")>td:eq(" + j + ")>input")[0].value = bestHoleScore;
+
+                    // if not zero, add class "complete" to td
+                    if (bestHoleScore > 0) {
+                        $("#groupTable>tbody>tr:eq(" + i + ")>td:eq(" + j + ")>input").addClass('complete');
+
+                    }
+
+
+                });
+
+            })
+        }
+
+        findWinner();
+
+
+        var sumScores = function() {
+
+            // For each playerTable
+            $("table[id*='playerTable']").each(function(i, a) {
+                console.log(a);
+
+                // For each hole
+                $(a).find("tr:first-child>td:not('.rowsum')").each(function(j) {
+                    var j = j;
+                    var completeCol = 0;
+                    var sumThroughCol
+                    // For each row (player) in the playerTable
+                    $(a).find(".scoreRow").each(function(k, c) {
+                        if (Number($(c).find("td:eq(" + j + ")>input")[0].value) > 0) {
+                            // console.log("complete column: " + j);
+                            completeCol = j;
+                            console.log(completeCol);
+                        }
+
+                    });
+
+
+
+                });
+
+            })
+        }
+
+        sumScores();
+
+
+
+
+
+
+
+
+        // Sum al score rows
+
+        function newSum(event) {
+
+            // sum by row
+            $("tr").each(function(rowindex) {
+                sum = 0;
+                col = 0;
+                $(this).find("td").each(function(colindex) {
+                    col++;
+                    newval = $(this).find("input").val();
+                    if (isNaN(newval)) {
+                        $(this).html(sum);
+                        if (col > ncol) {
+                            ncol = col - 1
+                        }
+                    } else {
+                        sum += parseInt(newval);
+                    }
+                });
+            });
+        } // Close newSum
+
+        newSum();
+    });
+    </script>
+    <h2>Group Scorecard</h2>
+    <table id="groupTable">
+        <tr class="scoreRow">
+            <th class="0">Team 1</th>
+            <td>
+                <input value="9" />
+            </td>
+            <td>
+                <input value="0" />
+            </td>
+            <td>
+                <input value="0" />
+            </td>
+            <td>
+                <input value="0" />
+            </td>
+            <td>
+                <input value="0" />
+            </td>
+            <td class="rowsum">-</td>
+        </tr>
+        <tr class="scoreRow">
+            <th class="0">Team 2</th>
+            <td>
+                <input value="8" />
+            </td>
+            <td>
+                <input value="0" />
+            </td>
+            <td>
+                <input value="0" />
+            </td>
+            <td>
+                <input value="0" />
+            </td>
+            <td>
+                <input value="0" />
+            </td>
+            <td class="rowsum">-</td>
+        </tr>
+        <tr class="scoreRow">
+            <th class="0">Team 3</th>
+            <td>
+                <input value="7" />
+            </td>
+            <td>
+                <input value="0" />
+            </td>
+            <td>
+                <input value="0" />
+            </td>
+            <td>
+                <input value="0" />
+            </td>
+            <td>
+                <input value="0" />
+            </td>
+            <td class="rowsum">-</td>
+        </tr>
+    </table>
+    <br>
+    <hr>
+    <br>
+    <h2>Team Scorecard</h2>
+    <table id="playerTable1">
+        <tr class="scoreRow">
+            <th class="1">Player 1</th>
+            <td>
+                <input value="1" />
+            </td>
+            <td>
+                <input value="2" />
+            </td>
+            <td>
+                <input value="3" />
+            </td>
+            <td>
+                <input value="0" />
+            </td>
+            <td>
+                <input value="0" />
+            </td>
+            <td class="rowsum">-</td>
+        </tr>
+        <tr class="scoreRow">
+            <th class="2">Player 2</th>
+            <td>
+                <input value="2" />
+            </td>
+            <td>
+                <input value="3" />
+            </td>
+            <td>
+                <input value="4" />
+            </td>
+            <td>
+                <input value="0" />
+            </td>
+            <td>
+                <input value="0" />
+            </td>
+            <td class="rowsum">-</td>
+        </tr>
+        <tr class="scoreRow">
+            <th class="3">Player 3</th>
+            <td>
+                <input value="3" />
+            </td>
+            <td>
+                <input value="3" />
+            </td>
+            <td>
+                <input value="4" />
+            </td>
+            <td>
+                <input value="2" />
+            </td>
+            <td>
+                <input value="0" />
+            </td>
+            <td class="rowsum">-</td>
+        </tr>
+    </table>
+    <br>
+    <h2>Team Scorecard</h2>
+    <table id="playerTable2">
+        <tr class="scoreRow">
+            <th class="4">Player 1</th>
+            <td>
+                <input value="3" />
+            </td>
+            <td>
+                <input value="4" />
+            </td>
+            <td>
+                <input value="1" />
+            </td>
+            <td>
+                <input value="0" />
+            </td>
+            <td>
+                <input value="0" />
+            </td>
+            <td class="rowsum">-</td>
+        </tr>
+        <tr class="scoreRow">
+            <th class="5">Player 2</th>
+            <td>
+                <input value="2" />
+            </td>
+            <td>
+                <input value="4" />
+            </td>
+            <td>
+                <input value="5" />
+            </td>
+            <td>
+                <input value="0" />
+            </td>
+            <td>
+                <input value="0" />
+            </td>
+            <td class="rowsum">-</td>
+        </tr>
+        <tr class="scoreRow">
+            <th class="6">Player 3</th>
+            <td>
+                <input value="3" />
+            </td>
+            <td>
+                <input value="5" />
+            </td>
+            <td>
+                <input value="2" />
+            </td>
+            <td>
+                <input value="0" />
+            </td>
+            <td>
+                <input value="0" />
+            </td>
+            <td class="rowsum">-</td>
+        </tr>
+    </table>
+    <br>
+    <h2>Team Scorecard</h2>
+    <table id="playerTable3">
+        <tr class="scoreRow">
+            <th class="7">Player 1</th>
+            <td>
+                <input value="4" />
+            </td>
+            <td>
+                <input value="2" />
+            </td>
+            <td>
+                <input value="3" />
+            </td>
+            <td>
+                <input value="0" />
+            </td>
+            <td>
+                <input value="0" />
+            </td>
+            <td class="rowsum">-</td>
+        </tr>
+        <tr class="scoreRow">
+            <th class="8">Player 2</th>
+            <td>
+                <input value="2" />
+            </td>
+            <td>
+                <input value="2" />
+            </td>
+            <td>
+                <input value="3" />
+            </td>
+            <td>
+                <input value="0" />
+            </td>
+            <td>
+                <input value="0" />
+            </td>
+            <td class="rowsum">-</td>
+        </tr>
+        <tr class="scoreRow">
+            <th class="9">Player 3</th>
+            <td>
+                <input value="3" />
+            </td>
+            <td>
+                <input value="2" />
+            </td>
+            <td>
+                <input value="4" />
+            </td>
+            <td>
+                <input value="4" />
+            </td>
+            <td>
+                <input value="0" />
+            </td>
+            <td class="rowsum">-</td>
+        </tr>
+    </table>
+</body>
+
+</html>
