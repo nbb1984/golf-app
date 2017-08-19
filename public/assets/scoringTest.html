@@ -12,13 +12,17 @@
     <script type="text/javascript">
     $(document).ready(function() {
 
-        // Variables to run newSum
-        var row = 0,
-            col = 0,
-            ncol = 0;
-        var sum;
+        /// FUNCTIONS
+
+        // (1) FOR EACH TEAM SCORECARD, FIND THE LOWEST SCORE BY A PLAYER FOR EACH HOLE
+        // ADD THE LOWEST SCORE TO THE TEAM'S ROW IN THE GROUP SCOREBOARD
+
+        // (2) SUM THE TOTAL NUMBER OF STROKES PER HOLE
+
+        // (3) FIND THE PLAYER/TEAM WITH THE LOWEST SCORE FOR ALL COMPLETED HOLES
 
 
+        // ---------------------------- (1) GROUP SCOREBOARD ---------------------------- //
 
         // Find the lowest score from each team and input into the group scorecard
 
@@ -46,15 +50,56 @@
                         $("#groupTable>tbody>tr:eq(" + i + ")>td:eq(" + j + ")>input").addClass('complete');
 
                     }
-
-
                 });
-
             })
         }
 
         findWinner();
 
+
+        // ---------------------------- (2) SUM ALL SCORE ROWS ---------------------------- //
+
+        // SUM THE TOTAL NUMBER OF STROKES PER HOLE FOR ALL 18 HOLES
+
+        // Variables to run newSum
+        var row = 0,
+            col = 0,
+            ncol = 0;
+        var sum;
+
+
+        function newSum(event) {
+
+            // sum by row
+            $("tr").each(function(rowindex) {
+                sum = 0;
+                col = 0;
+                $(this).find("td").each(function(colindex) {
+                    col++;
+                    newval = $(this).find("input").val();
+                    if (isNaN(newval)) {
+                        $(this).html(sum);
+                        if (col > ncol) {
+                            ncol = col - 1
+                        }
+                    } else {
+                        sum += parseInt(newval);
+                    }
+                });
+            });
+        } // Close newSum
+
+        newSum();
+
+
+        // ------------------------ (3) SUM ALL COMPLETED SCORE ROWS ------------------------- //
+
+
+        // FIND THE PLAYER/TEAM WITH THE LOWEST SCORE FOR ALL COMPLETED HOLES
+
+        // CURRENTLY INCOMPLETE - ONLY RETURNS FIRST INCOMPLETE HOLE
+
+        // NEED TO SUM FROM HOLE 1 THROUGH THE LAST COMPLETE HOLE
 
         var sumScores = function() {
 
@@ -89,34 +134,6 @@
 
 
 
-
-
-
-
-        // Sum al score rows
-
-        function newSum(event) {
-
-            // sum by row
-            $("tr").each(function(rowindex) {
-                sum = 0;
-                col = 0;
-                $(this).find("td").each(function(colindex) {
-                    col++;
-                    newval = $(this).find("input").val();
-                    if (isNaN(newval)) {
-                        $(this).html(sum);
-                        if (col > ncol) {
-                            ncol = col - 1
-                        }
-                    } else {
-                        sum += parseInt(newval);
-                    }
-                });
-            });
-        } // Close newSum
-
-        newSum();
     });
     </script>
     <h2>Group Scorecard</h2>
