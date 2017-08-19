@@ -138,7 +138,7 @@ $(document).ready(function() {
 
     // A function for sending score infor
     function enterScore(gameData) {
-        $.post("/api/enterscore", gameData)
+        $.post("/api/enterscore/:PlayerId/:GameId", gameData)
     }
 
 });
