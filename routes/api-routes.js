@@ -48,8 +48,11 @@ module.exports = function(app) {
         });
     });
 
+    // var hbsObject = { burgers: data };
+    // res.render('index', hbsObject);
+
     /// SEND TO GAME PAGE
-    app.get("/game/:gameID/player/:playerID", function(req, res) {
+    app.get("/game/:GameId/player/:PlayerId", function(req, res) {
         db.Game.findOne({
             where: {
                 id: req.params.gameID
@@ -57,8 +60,8 @@ module.exports = function(app) {
         }).then(function(dbGame) {
             db.PlayerToGame.findAll({
                     where: {
-                        GameID: req.params.gameID,
-                        PlayerID: req.params.playerID
+                        GameID: req.params.GameId,
+                        PlayerID: req.params.PlayerId
                     }
                 })
                 .then(function(dbGame, dbPlayerToGame) {
@@ -107,13 +110,9 @@ module.exports = function(app) {
                         PlayerId: dbPlayer.id,
                         teamname: dbTeam.teamname,
                         admin: true
+                    }).then(function(data) {
 
-                    }).then(function(dbP2G) {
-
-
-                        res.redirect("/game/:gameID/player/:playerID");
-
-
+                        res.redirect("/game/:" + data.GameId + "/player/:" + data.PlayerId);
 
                     }).catch(function(error) {
                         res.send(error);
@@ -155,9 +154,7 @@ module.exports = function(app) {
                 }).then(function(dbP2G) {
 
                     // res.json({ dbP2G, dbTeam, dbPlayer, dbGame });
-                    res.redirect("/game/:gameID/player/:playerID");
-
-
+                    res.redirect("/game/:" + dbP2G.GameId + "/player/:" + dbP2G.PlayerId);
 
                 }).catch(function(error) {
                     res.send(error);
