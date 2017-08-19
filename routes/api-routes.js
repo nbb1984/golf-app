@@ -60,12 +60,13 @@ module.exports = function(app) {
         }).then(function(dbGame) {
             db.PlayerToGame.findAll({
                     where: {
-                        GameID: req.params.GameId,
-                        PlayerID: req.params.PlayerId
+                        GameId: req.params.GameId,
+                        PlayerId: req.params.PlayerId
                     }
                 })
-                .then(function(dbGame, dbPlayerToGame) {
-                    res.render("index");
+                .then(function(data) {
+                var hbsObject = { PlayerToGame: data };
+                    res.render("index", hbsObject);
                 });
         });
 
